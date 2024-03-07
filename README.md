@@ -1,0 +1,1 @@
+ERP system with Project Management,HRM,Inventory using ReactJs,NodeJs,MoongoDB,Express and MySQL.
