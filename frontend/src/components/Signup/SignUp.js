@@ -284,7 +284,24 @@ const SignUp = () => {
                     </span>
                   </div>
                 </div>
+                <div className="mb-6">
+                  <label className="mb-2.5 block font-medium text-black dark:text-white">
+                    Profile Image
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="file"
+                      placeholder="Upload Profile Image"
+                      className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    />
 
+                    <span className="absolute right-4 top-4">
+                    <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+                    </svg>
+                    </span>
+                  </div>
+                </div>
                 <div className="mb-5">
                   <input
                     type="submit"
