@@ -1,21 +1,25 @@
 const express = require("express");
+const ErrorHandler = require("./middleware/error");
 const app = express();
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-    origin: ['http://localhost:3000',],
+    origin: ['http://localhost:3000'],
     credentials: true
 }));
 
-app.use(express.json());
+// Increase the JSON request size limit
+app.use(express.json({ limit: '1000mb' }));
+
+// Increase the form data (multipart/form-data) request size limit
+app.use(express.urlencoded({ limit: '1000mb', extended: true }));
+
 app.use(cookieParser());
+
 app.use("/test", (req, res) => {
   res.send("Hello world!");
 });
-
-app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
@@ -23,5 +27,13 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     path: "config/.env",
   });
 }
+
+// import routes
+const user = require("./controller/user");
+
+app.use("/api/v2/user", user);
+
+// it's for ErrorHandling
+app.use(ErrorHandler);
 
 module.exports = app;

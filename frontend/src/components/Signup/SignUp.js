@@ -1,6 +1,9 @@
 import { React , useState }  from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { server } from '../../server';
+import axios from 'axios';
+import { toast }  from 'react-toastify';
 
 const SignUp = () => {
 
@@ -10,21 +13,59 @@ const SignUp = () => {
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
+  const formData = new FormData();
 
   const handleFileInputChange = (e) => {
     const reader = new FileReader();
+   
   
     reader.onload = () => {
       setAvatar(reader.result);
     };
   
     if (e.target.files.length > 0) {
-      reader.readAsDataURL(e.target.files[0]);
+      const file = e.target.files[0];
+      setAvatar(file); // Set the file object directly
+  
+      // Append the file to the FormData object
+      formData.append('avatar', file);
+  
+      // You can also read the file for displaying or other purposes
+      // For example, if you want to display a preview
+      // const fileUrl = URL.createObjectURL(file);
+      // setPreviewUrl(fileUrl);
+    } else {
+      // Handle the case where no file is selected
+      setAvatar(null);
+      formData.delete('avatar'); // Remove 'avatar' from formData if needed
     }
   };  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
       e.preventDefault();
+     
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('password', password);
+      if (avatar) {
+        formData.append('avatar', avatar);
+      }
+
+
+      axios
+      .post(`${server}/user/create-user`,formData , { 
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      })
+      .then((res) => {
+        console.log(res);
+        toast.success(res.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.message);
+      })
   };
 
   return (
