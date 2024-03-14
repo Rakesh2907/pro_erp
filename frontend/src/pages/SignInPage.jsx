@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from '../components/Login/SignIn.js'
+import Login from '../components/Login/SignIn.jsx'
 
 const SignInPage = () => {
   return (
@@ -9,4 +9,4 @@ const SignInPage = () => {
   )
 }
 
-export default SignInPage
+export default SignInPage;
