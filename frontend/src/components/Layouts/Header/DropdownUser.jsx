@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 import UserOne from '../../../images/user/user-01.png';
+import axios from "axios";
+import { server } from "../../../server";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const DropdownUser = () => {
+  const navigate = useNavigate();
+  const {user} = useSelector((state) => state.user);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -35,6 +40,19 @@ const DropdownUser = () => {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
+  const logoutHandler = () => {
+    axios
+    .get(`${server}/user/logout`, { withCredentials: true })
+    .then((res) => {
+      toast.success(res.data.message);
+      window.location.reload(true);
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error.response.data.message);
+    });
+  }
+
   return (
     <div className="relative">
       <Link
@@ -45,7 +63,7 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {user?.name}
           </span>
           <span className="block text-xs">UX Designer</span>
         </span>
@@ -127,7 +145,7 @@ const DropdownUser = () => {
 
         <div className="flex flex-col gap-5 px-6 py-4">
           <Link
-            to="#"
+            onClick={logoutHandler}
             className="text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
           >
             Sign out
