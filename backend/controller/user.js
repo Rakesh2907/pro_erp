@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 //const sendMail = require("../utils/sendMail");
 const sendToken = require("../utils/jwtToken");
 const multer = require('multer');
+const { isAuthenticated } = require("../middleware/auth");
 
 // Set up multer to handle multipart/form-data
 const storage = multer.memoryStorage(); // This example stores files in memory, adjust as needed
@@ -129,6 +130,28 @@ router.post(
       }
 
       sendToken(user, 201, res);
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// load user
+router.get(
+  "/getuser",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const user = await User.findById(req.user.id);
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exists", 400));
+      }
+
+      res.status(200).json({
+        success: true,
+        user,
+      });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
