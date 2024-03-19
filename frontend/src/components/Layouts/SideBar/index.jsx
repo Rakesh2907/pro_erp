@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 import SidebarLinkGroup from './SidebarLinkGroup';
 import Logo from '../../../images/logo/logo-icon.svg';
-import ProjectMgtSiderBarNavigation from '../../ProjectManagement/SiderBarNavigation';
-import DefaultSidebarNavidation from '../../Home/SideBarNavigation';
-import HRNSideBarNavigation from '../../HumanResouceManagement/SideBarNavigation';
-import InventoryNavigation from '../../InventoryManagement/SideBarNavigation.jsx';
+import axios from 'axios';
+import { server } from "../../../server";
+import SiderBarNavigation from "../../Home/SideBarNavigation";
+
 
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
   const { pathname } = location;
+
+  const { module_id } = useParams();
+  
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
@@ -20,7 +23,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
   );
   
-  const [selectedNavigation, setSelectedNavigation] = useState('');
+  const [loadedMenus, setLoadedMenus] = useState([]);
+  //const [selectedNavigation, setSelectedNavigation] = useState('');
+  
+  useEffect(() => {
+    const module_id = localStorage.getItem('module_id');
+
+        if(pathname !== '/home'){ 
+            axios.get(`${server}/menu/getmenus/${module_id}`, {
+                withCredentials: true,
+            }).then(response => {
+                setLoadedMenus(response.data.menus);
+            });
+        }
+  },[pathname,module_id]);   
 
   // close on click outside
   useEffect(() => {
@@ -57,60 +73,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     }
   }, [sidebarExpanded]);
   
-  useEffect(() => {
-    // Retrieve the selected navigation from localStorage
-    const storedNavigation = localStorage.getItem('selectedNavigation');
-    if (storedNavigation && pathname !== '/home') {
-      setSelectedNavigation(storedNavigation);
-    }else{
-          // If no selected navigation is found, set the default navigation based on the URL
-      if (pathname === '/home') {
-        setSelectedNavigation('default_home_navigation');
-     }
-    }
-  }, [pathname]);
-
-
-  const handleProjectManagementClick = () => {
-        setSelectedNavigation('project_management');
-         // Store the selected navigation in localStorage
-         localStorage.setItem('selectedNavigation', 'project_management');
-  }
-  
-  const handleHRMClick = () => {
-    setSelectedNavigation('hrm');
-    localStorage.setItem('selectedNavigation', 'hrm');
-  }
-
-  const handleInventoryClick = () => {
-     setSelectedNavigation('inventory');
-     localStorage.setItem('selectedNavigation', 'inventory'); 
-  }
 
   // Render the appropriate sidebar navigation based on the selectedNavigation state
-  const renderSidebarNavigation = () => {
-    switch (selectedNavigation) {
-      case 'project_management':
+  const renderSidebarNavigation = (open) => {
         return (
-           <ProjectMgtSiderBarNavigation/>
+           <div>
+             <SiderBarNavigation
+               onOpen = {open}
+               loadedMenus = {loadedMenus}
+             />
+           </div>       
         );
-      case 'hrm' :
-        return (
-          <HRNSideBarNavigation />
-        );
-      case 'inventory' :
-          return (
-            <InventoryNavigation />
-          );  
-      default:
-        return (
-           <DefaultSidebarNavidation 
-             onLoadPMSNavigation={handleProjectManagementClick}
-             onLoadHRMNavigation={handleHRMClick}
-             onLoadInventoryNavigation={handleInventoryClick}
-           />                 
-        );
-    }
   };
 
   return (
@@ -180,7 +153,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         e.preventDefault();
                         sidebarExpanded
                           ? handleClick()
-                          : setSidebarExpanded(true);
+                          : setSidebarExpanded(sidebarExpanded);
                       }}
                     >
                       <svg
@@ -228,13 +201,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       </svg>
                     </NavLink>
                     {/* <!-- Dropdown Menu Start --> */}
-                    <div
-                      className={`translate transform overflow-hidden ${
-                        !open && 'hidden'
-                      }`}
-                    >
-                      {renderSidebarNavigation()}
-                    </div>
+                      {renderSidebarNavigation(open)}
+
                     {/* <!-- Dropdown Menu End --> */}
                   </React.Fragment>
                 );

@@ -1,6 +1,19 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { SignInPage, SignUpPage, ActivationPage, HomePage, ProjectManagementPage, HRMPage, InventoryManagementPage } from "./routes/Routes.js";
+import { 
+  SignInPage, 
+  SignUpPage, 
+  ActivationPage, 
+  HomePage, 
+  ProjectManagementPage, 
+  HRMPage, 
+  InventoryManagementPage, 
+  SelfServicePage,
+  LeavePage,
+  TimePage,
+  EmploymentPage,
+  CRMPage
+} from "./routes/Routes.js";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,6 +69,46 @@ const App = () => {
                 <InventoryManagementPage/>
               </ProtectedRoute>  
             }
+        />
+        <Route
+           path="/self_services"
+           element={
+            <ProtectedRoute>
+               <SelfServicePage/>
+            </ProtectedRoute>  
+          } 
+        />
+        <Route
+           path="/leave"
+           element={
+            <ProtectedRoute>
+               <LeavePage/>
+            </ProtectedRoute>  
+          } 
+        />
+        <Route
+           path="/time"
+           element={
+            <ProtectedRoute>
+               <TimePage/>
+            </ProtectedRoute>  
+          } 
+        />
+        <Route
+          path="/self_services/employment_view"
+          element={
+               <ProtectedRoute>
+                  <EmploymentPage />
+               </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/crm"
+          element={
+               <ProtectedRoute>
+                  <CRMPage />
+               </ProtectedRoute>
+          }
         />
       </Routes>
       <ToastContainer

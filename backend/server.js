@@ -1,5 +1,6 @@
 const app = require("./app");
 const connectDatabase = require("./db/Database");
+const connectDatabaseMysql = require("./db/Database_mysql");
 
 // Handling uncaught Exception
 process.on("uncaughtException", (err) => {
@@ -16,6 +17,9 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 // connect db
 connectDatabase();
+
+// connect MYSQL
+connectDatabaseMysql();
 
 // create server
 const server = app.listen(process.env.PORT, () => {

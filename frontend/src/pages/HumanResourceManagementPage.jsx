@@ -4,7 +4,9 @@ import HomePage from './HomePage';
 const HumanResourceManagementPage = () => {
   return (
     <div>
-       <HomePage/>
+       <HomePage> 
+        sdasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+       </HomePage>
     </div>
   )
 }
