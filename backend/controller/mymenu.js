@@ -1,5 +1,5 @@
 const express = require("express");
-const { getMenuDetails } = require("../model/mymenu");
+const { getMenuDetails, getSubMenuDetails } = require("../model/mymenu");
 const router = express.Router();
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -14,7 +14,7 @@ router.get(
       const id = req.params.id;  
 
       try {
-         console
+      
         const menus = await getMenuDetails(id);
   
         res.status(200).json({
@@ -26,5 +26,26 @@ router.get(
       }
     })
   );
+ 
+  // load sub-menus
+  router.get(
+    "/get_sub_menus/:id",
+    isAuthenticated,
+    catchAsyncErrors(async (req, res, next) => {
+      
+      const id = req.params.id;
+      try {
 
+        const sub_menus = await getSubMenuDetails(id);
+  
+        res.status(200).json({
+          success: true,
+          sub_menus,
+        });
+
+      }catch (error){
+         return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
   module.exports = router; 

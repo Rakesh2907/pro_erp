@@ -8,7 +8,6 @@ import {
   ProjectManagementPage, 
   HRMPage, 
   InventoryManagementPage, 
-  SelfServicePage,
   LeavePage,
   TimePage,
   EmploymentPage,
@@ -71,14 +70,6 @@ const App = () => {
             }
         />
         <Route
-           path="/self_services"
-           element={
-            <ProtectedRoute>
-               <SelfServicePage/>
-            </ProtectedRoute>  
-          } 
-        />
-        <Route
            path="/leave"
            element={
             <ProtectedRoute>
@@ -95,7 +86,7 @@ const App = () => {
           } 
         />
         <Route
-          path="/self_services/employment_view"
+          path="/employment_view"
           element={
                <ProtectedRoute>
                   <EmploymentPage />

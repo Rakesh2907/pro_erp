@@ -10,8 +10,7 @@ const EmploymentPage = () => {
             items={[
               { label: 'Home', link: '/home' },
               { label: 'Dashboard', link: '/hrm' },
-              { label: 'Self Services', link: '/self_services' },
-              { label: 'Employment', link: '/self_services/employment' }
+              { label: 'Employment', link: '/employment_view' }
             ]}
         />
       </HomePage>

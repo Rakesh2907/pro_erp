@@ -5,7 +5,6 @@ import HomePage from "../pages/HomePage";
 import ProjectManagementPage from "../pages/ProjectManagementPage";
 import HRMPage from "../pages/HumanResourceManagementPage";
 import InventoryManagementPage from "../pages/InventoryManagementPage";
-import SelfServicePage from "../pages/SelfServicePage";
 import LeavePage from "../pages/LeavePage";
 import TimePage from "../pages/TimePage";
 import EmploymentPage from "../pages/EmploymentPage";
@@ -19,7 +18,6 @@ export {
     ProjectManagementPage,
     HRMPage,
     InventoryManagementPage,
-    SelfServicePage,
     LeavePage,
     TimePage,
     EmploymentPage,
