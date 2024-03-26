@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation} from 'react-router-dom';
 import ProMgm from '../../images/icons/project-management.png';
 import SidebarLinkGroup from '../Layouts/SideBar/SidebarLinkGroup';
@@ -9,20 +9,31 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
   const location = useLocation();
   const { pathname } = location;
 
-  const [loadedSubMenus, setLoadedSubMenus] = useState([]);
+  const [subMenusMap, setSubMenusMap] = useState({});
 
-  const storedSidebarExpanded = localStorage.getItem('sidebar-expanded');
-  const [sidebarExpanded, setSidebarExpanded] = useState(
-    storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
-  );
-  
-  const loadSubNavigation = (menu_id) => {
-      axios.get(`${server}/menu/get_sub_menus/${menu_id}`, {
-        withCredentials: true,
-    }).then(response => {
-        sidebarExpanded ? setLoadedSubMenus(response.data.sub_menus) : setSidebarExpanded(true);
+  useEffect(() => {
+    // Initialize submenus map
+    const initialSubMenusMap = {};
+    loadedMenus.forEach(menu => {
+      if (menu.sub_menu === '1') {
+        initialSubMenusMap[menu.menu_id] = [];
+      }
     });
-  }
+    setSubMenusMap(initialSubMenusMap);
+  }, [loadedMenus]);
+
+  const loadSubNavigation = (menu_id) => {
+    axios.get(`${server}/menu/get_sub_menus/${menu_id}`, {
+      withCredentials: true,
+    }).then(response => {
+      setSubMenusMap(prevState => ({
+        ...prevState,
+        [menu_id]: response.data.sub_menus
+      }));
+    });
+  };
+
+  //console.log("After Fetch : "+JSON.stringify(subMenusMap, null, 2));
 
   return (
     <div className={`translate transform overflow-hidden`}>
@@ -91,10 +102,10 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
                         }`}
                       >
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
-                        {loadedSubMenus.map((subMenuComponent, index) => (
+                        {subMenusMap[menuComponent.menu_id] && subMenusMap[menuComponent.menu_id].map((subMenuComponent, index) => (
                           <li key={index}>
                             <NavLink
-                             to={`/${subMenuComponent.url}`}
+                              to={`/${subMenuComponent.url}`}
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
