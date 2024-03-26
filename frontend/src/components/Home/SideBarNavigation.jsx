@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation} from 'react-router-dom';
-import ProMgm from '../../images/icons/project-management.png';
 import SidebarLinkGroup from '../Layouts/SideBar/SidebarLinkGroup';
 import { server } from '../../server';
 import axios from 'axios';
@@ -48,7 +47,7 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
                   (isActive && '!text-white')
                 }
               >
-                <img src={ProMgm} alt={`${menuComponent.menu_name}`} className='w-8' title={`${menuComponent.menu_name}`} />
+                <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-8' title={`${menuComponent.menu_name}`} />
                 {menuComponent.menu_name}
               </NavLink>
             </li>
@@ -75,7 +74,7 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
                              handleClick()
                         }}
                       >
-                        <img src={ProMgm} alt={`${menuComponent.menu_name}`} className='w-8' title={`${menuComponent.menu_name}`} />
+                        <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-8' title={`${menuComponent.menu_name}`} />
                         {menuComponent.menu_name}
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${

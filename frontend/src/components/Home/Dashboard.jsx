@@ -24,7 +24,7 @@ const Dashboard = () => {
        {loadedModules.map((moduleComponent, index) => (
                 <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" key={index}>
                     <div className="flex">
-                    <img src={`../../../images/icons/${moduleComponent.module_icon}`} alt="Module Icon" className="w-10 h-10 mr-4" />
+                    <img src={`/images/icons/${moduleComponent.module_icon}`} alt="Module Icon" className="w-10 h-10 mr-4" />
                         
                      <h6 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"> {moduleComponent.module_name}</h6>
                     </div>
