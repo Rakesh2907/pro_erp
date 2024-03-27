@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import UserOne from '../../../images/user/user-01.png';
 import axios from "axios";
 import { server } from "../../../server";
 import { toast } from "react-toastify";
@@ -69,7 +68,7 @@ const DropdownUser = () => {
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <img src={UserOne} alt="User" />
+          <img src="images/user/user-01.png" alt="User" />
         </span>
 
         <svg

@@ -28,7 +28,7 @@ const Dashboard = () => {
                         
                      <h6 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"> {moduleComponent.module_name}</h6>
                     </div>
-                    <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">Go to this step by step guideline process on how to certify for your weekly benefits:</p>
+                    <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">{moduleComponent.description}</p>
                     <Link to={`/${moduleComponent.key}`} className="inline-flex font-medium items-center text-blue-600 hover:underline"  onClick={() => loadDynamicNavigation(moduleComponent.module_id)}>
                         Open
                         <svg className="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">

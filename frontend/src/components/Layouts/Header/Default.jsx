@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoIcon from "../../../images/logo/logo-icon.svg";
 //import DropdownMessage from './DropdownMessage';
 //import DropdownNotification from './DropdownNotification';
 import DropdownUser from './DropdownUser';
@@ -56,7 +55,7 @@ const Default = (props) => {
               {/* <!-- Hamburger Toggle BTN --> */}
     
               <Link className="block flex-shrink-0 lg:hidden" to="/">
-                <img src={LogoIcon} alt="Logo" />
+                <img src="images/logo/logo-icon.svg" alt="Logo" />
               </Link>
             </div>
     

@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
-//import SidebarLinkGroup from './SidebarLinkGroup';
-import Logo from '../../../images/logo/logo-icon.svg';
 import axios from 'axios';
 import { server } from "../../../server";
 import SiderBarNavigation from "../../Home/SideBarNavigation";
@@ -18,13 +16,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
-  /*const storedSidebarExpanded = localStorage.getItem('sidebar-expanded');
-  const [sidebarExpanded, setSidebarExpanded] = useState(
-    storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
-  );
-  */
+ 
   const [loadedMenus, setLoadedMenus] = useState([]);
-  //const [selectedNavigation, setSelectedNavigation] = useState('');
+
   
   useEffect(() => {
     const module_id = localStorage.getItem('module_id');
@@ -64,28 +58,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
-  /*useEffect(() => {
-    localStorage.setItem('sidebar-expanded', sidebarExpanded.toString());
-    if (sidebarExpanded) {
-      document.querySelector('body')?.classList.add('sidebar-expanded');
-    } else {
-      document.querySelector('body')?.classList.remove('sidebar-expanded');
-    }
-  }, [sidebarExpanded]);*/
   
-
-  // Render the appropriate sidebar navigation based on the selectedNavigation state
-  const renderSidebarNavigation = (open) => {
-        return (
-           <div>
-             <SiderBarNavigation
-               onOpen = {open}
-               loadedMenus = {loadedMenus}
-             />
-           </div>       
-        );
-  };
-
   return (
     <aside
     ref={sidebar}
@@ -96,7 +69,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     {/* <!-- SIDEBAR HEADER --> */}
     <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
       <NavLink to="/home">
-        <img src={Logo} alt="Logo" />
+        <img src="images/logo/logo-icon.svg" alt="Logo" />
       </NavLink>
 
       <button
@@ -133,7 +106,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </h3>
             {/* <!-- Menu Item Dashboard --> */}
                
-             {renderSidebarNavigation()}
+            <SiderBarNavigation
+               onOpen = {true}
+               loadedMenus = {loadedMenus}
+            />
             
             {/* <!-- Menu Item Dashboard --> */}
         </div>
