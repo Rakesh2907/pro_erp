@@ -1,5 +1,5 @@
 const express = require("express");
-const { getMenuDetails, getSubMenuDetails } = require("../model/mymenu");
+const { getMenuDetails, getSubMenuDetails, getRoutesDetails } = require("../model/mymenu");
 const router = express.Router();
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -48,4 +48,27 @@ router.get(
       }
     })
   );
+
+  // load routes
+  router.get(
+    "/getroutes",
+    isAuthenticated,
+    catchAsyncErrors(async (req, res, next) => {
+       
+      try{
+
+        const dynamic_routers = await getRoutesDetails();
+
+        res.status(200).json({
+          success: true,
+          dynamic_routers,
+        });
+
+      }catch (error){
+        return next(new ErrorHandler(error.message, 500));
+      }
+
+    })
+  );
+  
   module.exports = router; 

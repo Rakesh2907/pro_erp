@@ -47,7 +47,7 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
                   (isActive && '!text-white')
                 }
               >
-                <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-8' title={`${menuComponent.menu_name}`} />
+                <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-6' title={`${menuComponent.menu_name}`} />
                 {menuComponent.menu_name}
               </NavLink>
             </li>
@@ -74,7 +74,7 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
                              handleClick()
                         }}
                       >
-                        <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-8' title={`${menuComponent.menu_name}`} />
+                        <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-6' title={`${menuComponent.menu_name}`} />
                         {menuComponent.menu_name}
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${

@@ -20,7 +20,18 @@ async function getSubMenuDetails(parent_menu_id) {
     }
 }
 
+async function getRoutesDetails() {
+    try {
+        const [rows, fields] = await db.query('SELECT url, components_page FROM pro_menus WHERE components_load = ? AND is_deleted = ? ORDER BY menu_order ASC', ['1','0']);
+        return rows;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+}
+
 module.exports = {
     getMenuDetails,
-    getSubMenuDetails
+    getSubMenuDetails,
+    getRoutesDetails
 };

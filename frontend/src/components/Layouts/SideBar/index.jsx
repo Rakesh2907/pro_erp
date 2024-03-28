@@ -102,7 +102,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         {/* <!-- Menu Group --> */}
         <div>
           <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
-            MENU
+          <NavLink to="/home"> 
+            Home
+          </NavLink>  
           </h3>
             {/* <!-- Menu Item Dashboard --> */}
                
