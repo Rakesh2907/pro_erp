@@ -14,7 +14,7 @@ import { loadUser } from "./redux/actions/user";
 import React, { useEffect, useState, Suspense } from 'react';
 import axios from 'axios';
 import { server } from './server.js';
-//import { useSelector } from 'react-redux';
+import Loader from './common/Loader';
 
 
 // Function to fetch route data from the database
@@ -25,12 +25,9 @@ const fetchRoutes = async () => {
     });
     return response.data.dynamic_routers;
   } catch (error) {
-    console.error('Error fetching routes:', error);
     return [];
   }
 };
-
-
 
 // Function to load route components dynamically
 const loadRoutes = async () => {
@@ -44,37 +41,29 @@ const loadRoutes = async () => {
 
 const App = () => {
   
-  //const user = useSelector(state => state.user);
+  const [loading, setLoading] = useState(true);
   const [routes, setRoutes] = useState([]);
 
   useEffect(() => {
-    Store.dispatch(loadUser());
+   
     const fetchAndSetRoutes = async () => {
       try {
-        
-        //if (user.isAuthenticated) {
-          const fetchedRoutes = await loadRoutes();
-          setRoutes(fetchedRoutes);
-          
-        //} else {
-          //console.log('User data is empty. Routes will not be fetched.');
-        //}
+            const fetchedRoutes = await loadRoutes();
+            setRoutes(fetchedRoutes);
       } catch (error) {
         console.error('Error fetching and setting routes:', error);
       }
     };
-
+    Store.dispatch(loadUser())
     fetchAndSetRoutes();
-
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
- /* {routes.map((route, index) => (
-     console.log(route.url)
-  ))}
-*/
-
-  return (
-    <BrowserRouter>
+  
+  return loading ? (
+        <Loader/>
+  ): (
+    <BrowserRouter> 
       <Routes>
           <Route path="/" element={<SignInPage/>}/>
           <Route path="/signup" element={<SignUpPage/>} />
@@ -92,14 +81,15 @@ const App = () => {
             path={`/${route.url}`} 
             element={
               <ProtectedRoute>
-                <Suspense fallback={<div>Loading...</div>}>
-                  <route.component />
-                </Suspense>
+                 <Suspense fallback={<Loader/>}>
+                    <route.component />
+                 </Suspense> 
               </ProtectedRoute>
             }
           />
         ))}
       </Routes>
+     
       <ToastContainer
         position="bottom-center"
         autoClose={5000}

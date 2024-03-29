@@ -5,8 +5,6 @@ import HomePage from "../pages/HomePage";
 import ProjectManagementPage from "../pages/ProjectManagementPage";
 import HRMPage from "../pages/HumanResourceManagementPage";
 import InventoryManagementPage from "../pages/InventoryManagementPage";
-import LeavePage from "../pages/LeavePage";
-import TimePage from "../pages/TimePage";
 import EmploymentPage from "../pages/EmploymentPage";
 import CRMPage from "../pages/CRMPage";
 
@@ -18,8 +16,6 @@ export {
     ProjectManagementPage,
     HRMPage,
     InventoryManagementPage,
-    LeavePage,
-    TimePage,
     EmploymentPage,
     CRMPage
 }
