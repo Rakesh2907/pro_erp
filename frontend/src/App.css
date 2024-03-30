@@ -1,3 +1,45 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.isolate-unicode {
+    unicode-bidi: isolate;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+textarea.form-control {
+    min-height: calc(1.5em + .75rem + 2px);
+}
+
+.general-form .form-control {
+    position: relative;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-color: #f6f8f9;
+    background-color: #f6f8f9;
+    color: #4e5e6a;
+    box-shadow: none;
+} 
+
+.icon-16 {
+    width: 16px;
+    height: 16px;
+}
+
