@@ -43,3 +43,70 @@ textarea.form-control {
     height: 16px;
 }
 
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.overflow-anchor-none {
+    overflow-anchor: none;
+  }
+
+
+.touch-action-auto {
+    touch-action: auto;
+  }
+
+
+#post_timeline .post-content {
+    display: block;
+    width: 50%;
+    position: relative;
+    padding-top: 40px;
+} 
+
+#post_timeline .post-content:nth-child(odd) {
+    float: left;
+    clear: left;
+    padding-right: 20px;
+}
+
+#post_timeline .post-content:nth-child(2n) {
+    margin-top: 10px;
+}
+
+#post_timeline .post-content:nth-child(even) {
+    float: right;
+    clear: right;
+    padding-left: 20px;
+}
+
+#post_timeline .post-content:nth-child(odd) .post-date {
+    text-align: right;
+}
+
+#timeline .post-content .post-date span {
+    background: #6690F4;
+    color: #fff;
+    padding: 3px 10px 5px;
+    border-radius: 25px;
+}    
+
+
+@media screen and (max-width: 1400px){
+    #post_timeline > .post-content:first-child {
+        padding-top: 60px !important;
+    }
+}
+
+@media screen and (max-width: 1400px){
+    #post_timeline .post-content {
+        float: left;
+        width: 100% !important;
+        padding: 0 0 0 30px !important;
+        margin: 0 0 20px !important;
+    }
+}
+
