@@ -208,6 +208,56 @@ li {
     color: #4e5e6a;
 }
 
+.ps {
+    overflow: hidden !important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto;
+}
+
+.b-t {
+    border-top: 1px solid #f2f4f6;
+}
+
+.float-start {
+    float: left !important;
+}
+
+#post-form-container ul {
+    list-style: none;
+    padding: 0;
+}
+  
+#post-form-container li {
+    display: flex;
+    align-items: center;
+    padding: 8px 9px;
+    float: left;
+}
+
+#post-form-container .w-8,
+.w-12 {
+  width: 4rem;
+}
+
+#post-form-container .h-8,
+.h-12 {
+  height: 4rem;
+}
+
+#post-form-container .rounded-full {
+  border-radius: 0%;
+}
+
+#post-form-container .truncate {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 @media screen and (max-width: 1400px){
     #post_timeline > .post-content:first-child {
         padding-top: 60px !important;

@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { server } from '../server';
 
-const FileUpload = ({ onFileUpload }) => {
-    const [uploadedFiles, setUploadedFiles] = useState([]);
+const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadProgress}) => {
+    //const [uploadedFiles, setUploadedFiles] = useState([]);
 
     const onDrop = useCallback(async (acceptedFiles) => {
         // Ensure acceptedFiles is an array
@@ -28,12 +28,18 @@ const FileUpload = ({ onFileUpload }) => {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
+                onUploadProgress: (progressEvent) => {
+                    const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+                    setUploadProgress(progress);
+                },
             });
             console.log(response.data); // Handle response from server
+            setUploadProgress(0);
         } catch (error) {
             console.error('Error uploading files:', error);
+            setUploadProgress(0); 
         }
-    }, [onFileUpload, uploadedFiles]);
+    }, [onFileUpload, uploadedFiles, setUploadedFiles, setUploadProgress]);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
