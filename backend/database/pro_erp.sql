@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2024 at 07:11 PM
+-- Generation Time: Apr 11, 2024 at 07:26 PM
 -- Server version: 8.0.36-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3-4ubuntu2.20
 
@@ -115,9 +115,35 @@ CREATE TABLE `pro_modules` (
 
 INSERT INTO `pro_modules` (`module_id`, `module_name`, `key`, `components`, `module_icon`, `description`, `is_deleted`) VALUES
 (1, 'Projects Management', 'project_management', 'Project', 'project-management.png', 'Turning Visions into Reality: Your Project Management Journey Starts Here.', '0'),
-(2, 'Inventory Management', 'inventory_management', 'Inventory', 'stock-keeping-unit.png', 'Master Your Inventory, Empower Your Business: Simplify with Precision.', '0'),
-(3, 'Human Resource Management', 'hrm', 'HRM', 'human-resource.png', 'Unleash Your Team\'s Potential: HR Solutions for Tomorrow\'s Success.', '0'),
-(4, 'Customer Relationship Management', 'crm', 'CRM', 'management.png', 'Empowering Relationships: Elevate Your Customer Experience with CRM.', '0');
+(2, 'Inventory Management', 'inventory_management', 'Inventory', 'stock-keeping-unit.png', 'Master Your Inventory, Empower Your Business: Simplify with Precision.', '1'),
+(3, 'Human Resource Management', 'hrm', 'HRM', 'human-resource.png', 'Unleash Your Team\'s Potential: HR Solutions for Tomorrow\'s Success.', '1'),
+(4, 'Customer Relationship Management', 'crm', 'CRM', 'management.png', 'Empowering Relationships: Elevate Your Customer Experience with CRM.', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pro_timeline_post`
+--
+
+CREATE TABLE `pro_timeline_post` (
+  `post_id` int NOT NULL,
+  `post_description` text,
+  `post_files` text,
+  `created_by` text,
+  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `is_deleted` enum('0','1') NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `pro_timeline_post`
+--
+
+INSERT INTO `pro_timeline_post` (`post_id`, `post_description`, `post_files`, `created_by`, `created`, `is_deleted`) VALUES
+(1, 'nodeJs tutorial', '[\"PP.Mastering.Node.js.Nov.2013.www.EBooksWorld.ir.pdf\"]', '6617a08523a900f694dfb5c4', '2024-04-11 19:00:59', '0'),
+(2, 'test', '[\"pexels-michael-burrows-7147454.jpg\",\"pexels-pixabay-159045.jpg\"]', '6617a08523a900f694dfb5c4', '2024-04-11 19:02:17', '0'),
+(3, 'fdsfds fds fdsfdsfdsfdsf', '[\"pexels-alena-shekhovtcova-6074931.jpg\",\"pexels-michael-burrows-7147454.jpg\",\"pexels-pixabay-276267.jpg\",\"timeline (1).png\"]', '65f0652570b17cc443d42e02', '2024-04-11 19:03:49', '0'),
+(4, 'Node', '[\"learning-nodejs-development.pdf\"]', '65f0652570b17cc443d42e02', '2024-04-11 19:06:51', '0'),
+(5, 'Calendar Marathi.', '[\"Kalnirnay 2024.pdf\"]', '65f0652570b17cc443d42e02', '2024-04-11 19:13:04', '0');
 
 --
 -- Indexes for dumped tables
@@ -136,6 +162,12 @@ ALTER TABLE `pro_modules`
   ADD PRIMARY KEY (`module_id`);
 
 --
+-- Indexes for table `pro_timeline_post`
+--
+ALTER TABLE `pro_timeline_post`
+  ADD PRIMARY KEY (`post_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -150,6 +182,12 @@ ALTER TABLE `pro_menus`
 --
 ALTER TABLE `pro_modules`
   MODIFY `module_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pro_timeline_post`
+--
+ALTER TABLE `pro_timeline_post`
+  MODIFY `post_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
