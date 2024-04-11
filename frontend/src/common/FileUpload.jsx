@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { server } from '../server';
 
-const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadProgress}) => {
+const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadProgress, usedFileUpload, formData}) => {
     //const [uploadedFiles, setUploadedFiles] = useState([]);
 
     const onDrop = useCallback(async (acceptedFiles) => {
@@ -17,14 +17,13 @@ const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadP
         setUploadedFiles(updatedFiles);
         onFileUpload(updatedFiles); // Pass updated files to the parent component
 
-        const formData = new FormData();
+        //const formData = new FormData();
         updatedFiles.forEach((file) => {
             formData.append('files', file);
         });
 
         try {
-            // Replace 'YOUR_UPLOAD_ENDPOINT' with your actual upload endpoint URL
-            const response = await axios.post(`${server}/timeline/upload_files`, formData, {
+            const response = await axios.post(`${server}/`+usedFileUpload+`/upload-files`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -39,12 +38,10 @@ const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadP
             console.error('Error uploading files:', error);
             setUploadProgress(0); 
         }
-    }, [onFileUpload, uploadedFiles, setUploadedFiles, setUploadProgress]);
+    }, [onFileUpload, uploadedFiles, setUploadedFiles, setUploadProgress, usedFileUpload, formData]);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
-        // Update accept to allow specific MIME types, e.g., 'image/*', 'application/pdf', etc.
-        //accept: 'image/*, application/pdf', // Allow images and PDF files
         accept: {
             'image/png': ['.png'], 
             'image/jpeg': ['.jpg', '.jpeg'] ,
@@ -61,8 +58,7 @@ const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadP
                 <button
                     className="text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2 float-left"
                     onClick={(e) => {
-                        e.preventDefault(); // Prevent page reload
-                        // Add your file upload logic here
+                        e.preventDefault(); 
                     }}
                 >
                     <svg

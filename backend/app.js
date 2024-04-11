@@ -3,6 +3,7 @@ const ErrorHandler = require("./middleware/error");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 app.use(cors({
     origin: ['http://localhost:3000'],
@@ -14,12 +15,14 @@ app.use(express.json({ limit: '1000mb' }));
 
 // Increase the form data (multipart/form-data) request size limit
 app.use(express.urlencoded({ limit: '1000mb', extended: true }));
-
 app.use(cookieParser());
 
 app.use("/test", (req, res) => {
   res.send("Hello world!");
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
@@ -30,15 +33,15 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 // import routes
 const user = require("./controller/user");
-app.use("/api/v2/user", user);
-
+const timeline = require("./controller/timeline");
 const mymodule = require("./controller/mymodule");
-app.use("/api/v2/module", mymodule);
-
 const mymenu = require("./controller/mymenu");
+
+
+app.use("/api/v2/user", user);
+app.use("/api/v2/timeline", timeline);
+app.use("/api/v2/module", mymodule);
 app.use("/api/v2/menu", mymenu);
-
-
 
 
 
