@@ -79,24 +79,21 @@ router.post(
       if (description) {
         // Call the insertPostDetails function and wait for it to complete
         const post_id = await insertPostDetails(description, file_names, decoded.id);
-        if(post_id){
-          res.status(200).json({
-              success: true,
-              files: fileNames, 
-              post_id,
-              'message': 'Post saved successfully.' 
-            });
-        }
-        // Respond with file names, post ID, or any other data
-       
-      }else if(fileNames){
-          res.status(200).json({
-            success: true,
-            files: fileNames, 
-            'message': 'File(s) Uploaded successfully.'
-          });
-      }
 
+        if(post_id){
+
+            response = {
+              success: true,
+              message: 'Post saved successfully.',
+              post_id,
+              files: fileNames,
+            };
+        }
+      
+      }else if(fileNames){
+        response = { success: true, message: 'File(s) Uploaded successfully.', files: fileNames };
+      }
+      res.status(200).json(response);
     } catch (error) {
       console.error('Error inserting post details:', error);
       res.status(500).json({ error: 'Error inserting post details' });
