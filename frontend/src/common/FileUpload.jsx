@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { server } from '../server';
+import { toast }  from 'react-toastify';
 
 const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadProgress, usedFileUpload, formData}) => {
     //const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -34,6 +35,7 @@ const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadP
             });
             console.log(response.data); // Handle response from server
             setUploadProgress(0);
+            toast.success(response.data.message);
         } catch (error) {
             console.error('Error uploading files:', error);
             setUploadProgress(0); 
