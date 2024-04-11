@@ -1,11 +1,14 @@
 const db = require("../db/mysql_connection_pool");
 
-async function insertPostDetails(postDescription, fileNames) {
+async function insertPostDetails(postDescription, fileNames, userId) {
     try {
-        const [rows, fields] = await db.query('INSERT INTO pro_timeline_post (post_description, post_files) VALUES (?, ?)', [postDescription, JSON.stringify(fileNames)]);
+        // Check if fileNames is an array, if not, convert it to an array
+        const filesArray = Array.isArray(fileNames) ? fileNames : [fileNames];
+
+        const [rows, fields] = await db.query('INSERT INTO pro_timeline_post (post_description, post_files, created_by) VALUES (?, ?, ?)', [postDescription, JSON.stringify(filesArray), userId]);
         return rows;
     } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error inserting post details:', error);
         throw error;
     }
 }

@@ -2,9 +2,12 @@ const express = require("express");
 const { insertPostDetails } = require("../model/timeline");
 const router = express.Router();
 const ErrorHandler = require("../utils/ErrorHandler");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const { isAuthenticated } = require("../middleware/auth");
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
+const jwt = require("jsonwebtoken");
 
 // Dynamically create the uploads folder if it doesn't exist
 const uploadsFolder = path.join(__dirname, '../../myuploads/timeline');
@@ -54,16 +57,28 @@ const handleMulterErrors = (err, req, res, next) => {
 
 router.post(
   '/upload-files',
+  isAuthenticated,
   upload.array('files'),
   handleMulterErrors,
-  async (req, res) => { // Use async keyword for asynchronous operations
-    const { description, file_names } = req.body;
-    const fileNames = req.files.map((file) => file.filename);
+  catchAsyncErrors(async (req, res, next) => { // Use async keyword for asynchronous operations
+    const {token} = req.cookies;
+    
+    if (!token) {
+      return res.status(401).json({ error: "Please login to continue" });
+    }
+
 
     try {
+
+      // Decode and verify JWT token
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+      const { description, file_names } = req.body;
+      const fileNames = req.files.map((file) => file.filename);
+
       if (description) {
         // Call the insertPostDetails function and wait for it to complete
-        const post_id = await insertPostDetails(description, file_names);
+        const post_id = await insertPostDetails(description, file_names, decoded.id);
         if(post_id){
           res.status(200).json({
               success: true,
@@ -86,7 +101,7 @@ router.post(
       console.error('Error inserting post details:', error);
       res.status(500).json({ error: 'Error inserting post details' });
     }
-  }
+  })
 );
 
 module.exports = router;

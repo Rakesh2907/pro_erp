@@ -28,6 +28,7 @@ const FileUpload = ({ onFileUpload, uploadedFiles, setUploadedFiles , setUploadP
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
+                withCredentials: true,
                 onUploadProgress: (progressEvent) => {
                     const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
                     setUploadProgress(progress);

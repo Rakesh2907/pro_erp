@@ -34,9 +34,7 @@ const PostBlog = () => {
       formData.append('file_names[]', file.name); // Use 'file_names[]' as the field name
     });
 
-    console.log(formData);
-
-    axios.post(`${server}/timeline/upload-files`,formData).then((res) => {
+    axios.post(`${server}/timeline/upload-files`,formData, { withCredentials: true }).then((res) => {
       console.log(res);
       toast.success(res.data.message);
       setDescription('');
