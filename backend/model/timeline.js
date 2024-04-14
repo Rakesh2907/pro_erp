@@ -13,6 +13,17 @@ async function insertPostDetails(postDescription, fileNames, userId) {
     }
 }
 
+async function getPostDetails() {
+    try {
+        const [rows, fields] = await db.query('SELECT * FROM pro_timeline_post WHERE is_deleted = ? ORDER BY post_id DESC',['0']);
+        return rows;
+    }catch (error) {
+        console.error('Error get post details:', error);
+        throw error;
+    }
+}
+
 module.exports = {
-    insertPostDetails
+    insertPostDetails,
+    getPostDetails
 }

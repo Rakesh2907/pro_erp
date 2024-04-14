@@ -257,6 +257,20 @@ li {
   white-space: nowrap;
 }
 
+.timeline-images span.more {
+    padding: 5px 5px;
+    background-color: #000;
+    color: #fff;
+    margin-top: 0px;
+    position: absolute;
+    width: 80px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: 5px solid #4cc5cd;
+    margin-left: -80px;
+}
 
 @media screen and (max-width: 1400px){
     #post_timeline > .post-content:first-child {

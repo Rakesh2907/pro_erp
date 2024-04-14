@@ -1,5 +1,5 @@
 const express = require("express");
-const { insertPostDetails } = require("../model/timeline");
+const { insertPostDetails, getPostDetails } = require("../model/timeline");
 const router = express.Router();
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -97,6 +97,23 @@ router.post(
     } catch (error) {
       console.error('Error inserting post details:', error);
       res.status(500).json({ error: 'Error inserting post details' });
+    }
+  })
+);
+
+router.get(
+  '/getposts',
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const posts = await getPostDetails();
+
+      res.status(200).json({
+        success: true,
+        posts,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
     }
   })
 );

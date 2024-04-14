@@ -158,6 +158,26 @@ router.get(
   })
 );
 
+// Get Users using IDs
+router.post(
+  "/getusersdetails",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    const { userIds } = req.body;
+    try {
+      const users = await User.find({ _id: { $in: userIds } }); // Use _id instead of userId
+
+      res.status(200).json({
+        success: true,
+        users,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+
 // log out user
 router.get(
   "/logout",

@@ -11,7 +11,6 @@ router.get(
     isAuthenticated,
     catchAsyncErrors(async (req, res, next) => {
       try {
-         console
         const module = await getModuleDetails();
   
         res.status(200).json({
