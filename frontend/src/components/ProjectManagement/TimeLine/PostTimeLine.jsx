@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { server } from '../../../server';
-import { UPLOAD_PATH } from '../../../constants';
+import ReplyForm from '../TimeLine/ReplyForm';
 
 const PostTimeLine = () => {
     const [posts, setPosts] = useState([]);
+    const [activePostId, setActivePostId] = useState(null);
 
     useEffect(() => {
         axios.get(`${server}/timeline/getposts`, {
@@ -53,33 +54,40 @@ const PostTimeLine = () => {
             console.error('Error fetching user details:', error);
         }
     };
+    
+    const handleReplyClick = (postId) => {
+        setActivePostId(postId);
+    };
+
+
 
     const renderPostContent = (post) => {
-        // Check if post_files contain PDF files
         const postFiles = JSON.parse(post.post_files);
         const hasPDF = postFiles.some(file => file.endsWith('.pdf'));
 
-        if (hasPDF) {
-            // Render PDF icon if the post contains PDF files
-            return <img src="path_to_pdf_icon.png" alt="PDF Icon" />;
-        } else {
-            // Render images and post description
-            return (
-                <div>
-                    <p>{post.post_description}</p>
+        return (
+            <div key={post.post_id}>
+                <p>{post.post_description}</p>
+                {hasPDF ? (
+                    <div>
+                        <img src="path_to_pdf_icon.png" alt="PDF Icon" />
+                    </div>
+                ) : (
                     <div className="timeline-images mb15">
                         {postFiles.slice(0, 1).map((file, index) => (
                             <a key={index} href={`path_to_image/${file}`} className="mfp-image" data-title={file}>
-                                <img src={`${UPLOAD_PATH}timeline/${file}`} alt={file} />
+                                <img src={`${file}`} alt={file} />
                                 {postFiles.length > 1 && index === 0 && (
                                     <span className="more">+{postFiles.length - 1} More</span>
                                 )}
                             </a>
                         ))}
                     </div>
-                </div>
-            );
-        }
+                )}
+                 <button onClick={() => handleReplyClick(post.post_id)}>Reply</button>
+                 {activePostId === post.post_id && <ReplyForm postId={post.post_id} />}
+            </div>
+        );
     };
 
 
