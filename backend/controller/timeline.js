@@ -1,5 +1,5 @@
 const express = require("express");
-const { insertPostDetails, getPostDetails } = require("../model/timeline");
+const { insertPostDetails, getPostDetails, insertReplyDetails } = require("../model/timeline");
 const router = express.Router();
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -54,6 +54,31 @@ const handleMulterErrors = (err, req, res, next) => {
     next(); // Pass control to the next middleware
   }
 };
+
+router.post(
+  '/reply',
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+      const { postId, description, user } = req.body;
+
+      try {
+            const login_user_id = user._id;
+            
+            if (description && postId) {
+              const reply_id = await insertReplyDetails(description, postId, login_user_id);
+              if(reply_id){
+                  res.status(200).json({ message: 'Reply received successfully!' });
+              }
+            }else{
+              res.status(500).json({ error: 'Error : Decriptions is empty' });
+            }
+      } catch (error) {
+            console.error('Error inserting post details:', error);
+            res.status(500).json({ error: 'Error inserting Reply details' });
+      }     
+
+  })
+);
 
 router.post(
   '/upload-files',

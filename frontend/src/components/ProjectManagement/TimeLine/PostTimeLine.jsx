@@ -59,7 +59,9 @@ const PostTimeLine = () => {
         setActivePostId(postId);
     };
 
-
+    const hideForm = () => {
+        setActivePostId(null);
+    }; 
 
     const renderPostContent = (post) => {
         const postFiles = JSON.parse(post.post_files);
@@ -70,7 +72,7 @@ const PostTimeLine = () => {
                 <p>{post.post_description}</p>
                 {hasPDF ? (
                     <div>
-                        <img src="path_to_pdf_icon.png" alt="PDF Icon" />
+                        <img src="images/icons/pdf.png" alt="PDF Icon" />
                     </div>
                 ) : (
                     <div className="timeline-images mb15">
@@ -84,8 +86,9 @@ const PostTimeLine = () => {
                         ))}
                     </div>
                 )}
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-corner-up-left icon-16"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
                  <button onClick={() => handleReplyClick(post.post_id)}>Reply</button>
-                 {activePostId === post.post_id && <ReplyForm postId={post.post_id} />}
+                 {activePostId === post.post_id && <ReplyForm postId={post.post_id} hideForm={hideForm}/>}
             </div>
         );
     };

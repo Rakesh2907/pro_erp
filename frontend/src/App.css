@@ -272,6 +272,31 @@ li {
     margin-left: -80px;
 }
 
+.form-group {
+    margin-bottom: 15px;
+}
+
+.box {
+    display: table;
+    table-layout: fixed;
+    border-spacing: 0;
+    width: 100%;
+}
+.pr15 {
+    padding-right: 15px !important;
+}
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.box-content {
+    display: table-cell;
+    vertical-align: top;
+    height: 100%;
+    float: none;
+    overflow-x: hidden;
+}
+
 @media screen and (max-width: 1400px){
     #post_timeline > .post-content:first-child {
         padding-top: 60px !important;

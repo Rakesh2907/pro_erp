@@ -13,6 +13,16 @@ async function insertPostDetails(postDescription, fileNames, userId) {
     }
 }
 
+async function insertReplyDetails(replyDescription, postId, userId){
+    try {
+        const [rows, fields] = await db.query('INSERT INTO pro_post_reply (reply_description, post_id, created_by) VALUES (?, ?, ?)', [replyDescription, postId, userId]);
+        return rows;
+    } catch (error) {
+        console.error('Error inserting reply details:', error);
+        throw error;
+    }
+}
+
 async function getPostDetails() {
     try {
         const [rows, fields] = await db.query('SELECT * FROM pro_timeline_post WHERE is_deleted = ? ORDER BY post_id DESC',['0']);
@@ -25,5 +35,6 @@ async function getPostDetails() {
 
 module.exports = {
     insertPostDetails,
-    getPostDetails
+    getPostDetails,
+    insertReplyDetails
 }
