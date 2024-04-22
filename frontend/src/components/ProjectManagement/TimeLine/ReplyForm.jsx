@@ -4,7 +4,7 @@ import { server } from '../../../server';
 import { useSelector } from "react-redux";
 import { toast }  from 'react-toastify';
 
-const ReplyForm = ({ postId, hideForm }) => {
+const ReplyForm = ({ postId, hideForm, onReplySubmit}) => {
 
   const { user } = useSelector((state) => state.user);
 
@@ -33,6 +33,10 @@ const ReplyForm = ({ postId, hideForm }) => {
         setFormData({ description: '' });
         toast.success(response.data.message);
         hideForm();
+        // Call onReplySubmit with the new reply data
+        if (onReplySubmit) {
+          onReplySubmit(response.data.reply); // Assuming response.data.reply contains the new reply data
+        }
       } else {
         toast.error('Error submitting reply:', response.data.error);
       }

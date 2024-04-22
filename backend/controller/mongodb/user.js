@@ -1,13 +1,13 @@
 const express = require("express");
-const User = require("../model/user");
+const User = require("../../model/mongodb/user");
 const router = express.Router();
-const ErrorHandler = require("../utils/ErrorHandler");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const ErrorHandler = require("../../utils/ErrorHandler");
+const catchAsyncErrors = require("../../middleware/catchAsyncErrors");
 const jwt = require("jsonwebtoken");
 //const sendMail = require("../utils/sendMail");
-const sendToken = require("../utils/jwtToken");
+const sendToken = require("../../utils/jwtToken");
 const multer = require('multer');
-const { isAuthenticated } = require("../middleware/auth");
+const { isAuthenticated } = require("../../middleware/auth");
 
 // Set up multer to handle multipart/form-data
 const storage = multer.memoryStorage(); // This example stores files in memory, adjust as needed

@@ -1,16 +1,16 @@
 const express = require("express");
-const { insertPostDetails, getPostDetails, insertReplyDetails } = require("../model/timeline");
+const { insertPostDetails, getPostDetails, insertReplyDetails } = require("../../model/mysql/timeline");
 const router = express.Router();
-const ErrorHandler = require("../utils/ErrorHandler");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const { isAuthenticated } = require("../middleware/auth");
+const ErrorHandler = require("../../utils/ErrorHandler");
+const catchAsyncErrors = require("../../middleware/catchAsyncErrors");
+const { isAuthenticated } = require("../../middleware/auth");
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const jwt = require("jsonwebtoken");
 
 // Dynamically create the uploads folder if it doesn't exist
-const uploadsFolder = path.join(__dirname, '../../myuploads/timeline');
+const uploadsFolder = path.join(__dirname, '../../../myuploads/timeline');
 if (!fs.existsSync(uploadsFolder)) {
   fs.mkdirSync(uploadsFolder, { recursive: true });
 }

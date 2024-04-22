@@ -1,4 +1,4 @@
-const db = require("../db/mysql_connection_pool");
+const db = require("../../db/mysql_connection_pool");
 
 async function insertPostDetails(postDescription, fileNames, userId) {
     try {

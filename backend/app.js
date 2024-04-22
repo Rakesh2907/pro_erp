@@ -31,9 +31,12 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   });
 }
 
-// import routes
-const user = require("./controller/user");
-const timeline = require("./controller/timeline");
+
+const user = require("./controller/mongodb/user");
+const timeline = require("./controller/mongodb/timeline");
+
+// import routes mysql
+// const timeline = require("./controller/mysql/timeline");
 const mymodule = require("./controller/mymodule");
 const mymenu = require("./controller/mymenu");
 
