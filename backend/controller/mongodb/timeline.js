@@ -150,7 +150,7 @@ router.get(
     catchAsyncErrors(async (req, res, next) => {
       try {
         // Fetch all posts from MongoDB
-        const posts = await Post.find();
+        const posts = await Post.find().sort({ created: -1 });
   
         // Fetch replies for each post
         const postsWithReplies = await Promise.all(

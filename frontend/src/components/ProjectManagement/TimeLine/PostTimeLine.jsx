@@ -3,7 +3,7 @@ import axios from 'axios';
 import { server } from '../../../server';
 import ReplyForm from '../TimeLine/ReplyForm';
 
-const PostTimeLine = () => {
+const PostTimeLine = ({keyProp}) => {
   const [posts, setPosts] = useState([]);
   const [activePostId, setActivePostId] = useState(null);
   const [expandedPosts, setExpandedPosts] = useState({});
@@ -33,14 +33,15 @@ const PostTimeLine = () => {
         console.error('Error fetching user details:', error);
       }
     };
-
-    axios.get(`${server}/timeline/getposts`, { withCredentials: true })
-      .then(response => {
-        setPosts(response.data.posts);
-        fetchPostUserDetails(response.data.posts);
-      })
-      .catch(error => console.error('Error fetching posts:', error));
-  }, []); // Empty dependency array means this effect runs only once
+    if(keyProp){
+        axios.get(`${server}/timeline/getposts`, { withCredentials: true })
+          .then(response => {
+            setPosts(response.data.posts);
+            fetchPostUserDetails(response.data.posts);
+          })
+          .catch(error => console.error('Error fetching posts:', error));
+    }  
+  }, [keyProp]); // Empty dependency array means this effect runs only once
 
   
 
@@ -70,8 +71,8 @@ const PostTimeLine = () => {
 
   const renderPostContent = (post) => {
 
-    const postFiles = post.post_files; // Assuming it's an array of file names
-    const hasPDF = postFiles.some(file => file.endsWith('.pdf'));
+    const postFiles = post.post_files || []; // Assuming it's an array of file names
+    const hasPDF = postFiles.some(file => file && file.endsWith('.pdf'));
 
 
     // Determine if "View X Replies" link should be shown

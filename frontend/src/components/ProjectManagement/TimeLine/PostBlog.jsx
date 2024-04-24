@@ -4,7 +4,7 @@ import axios from 'axios';
 import { server } from '../../../server';
 import { toast }  from 'react-toastify';
 
-const PostBlog = () => {
+const PostBlog = ({handleNewPost}) => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [description, setDescription] = useState('');
@@ -39,6 +39,7 @@ const PostBlog = () => {
       toast.success(res.data.message);
       setDescription('');
       setUploadedFiles([]);
+      handleNewPost(); // Call the handleNewPost function after successful post
     })
     .catch((error) => {
       console.log(error);
