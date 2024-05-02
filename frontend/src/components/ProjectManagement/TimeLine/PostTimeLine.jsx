@@ -1,15 +1,22 @@
+import { useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { server } from '../../../server';
 import ReplyForm from '../TimeLine/ReplyForm';
+import { useSelector } from 'react-redux';
+import { updatePostAdded } from '../../../redux/actions/postblog';
 
 const PostTimeLine = ({keyProp}) => {
+  const dispatch = useDispatch();
+  const postBlogAdded = useSelector((state) => state.postblog.postAdded);
+  
   const [posts, setPosts] = useState([]);
   const [activePostId, setActivePostId] = useState(null);
   const [expandedPosts, setExpandedPosts] = useState({});
 
 
   useEffect(() => {
+    
     const fetchPostUserDetails = async (postsData) => {
       try {
         const userIds = postsData.map(post => post.created_by);
@@ -33,15 +40,24 @@ const PostTimeLine = ({keyProp}) => {
         console.error('Error fetching user details:', error);
       }
     };
-    if(keyProp){
-        axios.get(`${server}/timeline/getposts`, { withCredentials: true })
-          .then(response => {
-            setPosts(response.data.posts);
-            fetchPostUserDetails(response.data.posts);
-          })
-          .catch(error => console.error('Error fetching posts:', error));
+
+    const fetchPosts = async () => {
+        try {
+          const response = await axios.get(`${server}/timeline/getposts`, { withCredentials: true });
+          setPosts(response.data.posts);
+          fetchPostUserDetails(response.data.posts);
+          // Additional logic as needed
+        } catch (error) {
+          console.error('Error fetching posts:', error);
+        }
+    };
+
+    //if (keyProp === 'postAdded') {
+    if(postBlogAdded){  
+        fetchPosts();
+        dispatch(updatePostAdded(false));
     }  
-  }, [keyProp]); // Empty dependency array means this effect runs only once
+  }, [postBlogAdded,dispatch]); // Empty dependency array means this effect runs only once
 
   
 

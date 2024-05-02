@@ -1,10 +1,16 @@
+import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import FileUpload from '../../../common/FileUpload';
 import axios from 'axios';
 import { server } from '../../../server';
 import { toast }  from 'react-toastify';
 
-const PostBlog = ({handleNewPost}) => {
+import { updatePostAdded } from '../../../redux/actions/postblog';
+
+const PostBlog = () => {
+
+  const dispatch = useDispatch();
+
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [description, setDescription] = useState('');
@@ -29,22 +35,26 @@ const PostBlog = ({handleNewPost}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     formData.append('description', description);
-    // Append each file name separately for the 'file_names[]' array
     uploadedFiles.forEach((file) => {
-      formData.append('file_names[]', file.name); // Use 'file_names[]' as the field name
+      formData.append('file_names[]', file.name);
     });
-
-    axios.post(`${server}/timeline/upload-files`,formData, { withCredentials: true }).then((res) => {
+  
+    try {
+      const res = await axios.post(`${server}/timeline/upload-files`, formData, { withCredentials: true });
       console.log(res);
-      toast.success(res.data.message);
-      setDescription('');
-      setUploadedFiles([]);
-      handleNewPost(); // Call the handleNewPost function after successful post
-    })
-    .catch((error) => {
-      console.log(error);
-      toast.error(error.response.data.message);
-    })
+      
+      if (res && res.data && res.data.message) {
+        toast.success(res.data.message);
+        setDescription('');
+        setUploadedFiles([]);
+        dispatch(updatePostAdded(true));
+      } else {
+        toast.error('Unexpected response format');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error(error.response?.data?.message || 'An error occurred');
+    }
   };
   
   
