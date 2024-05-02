@@ -162,7 +162,7 @@ const PostTimeLine = ({postBlogAdded}) => {
         {areRepliesExpanded(post._id) && (
           <div id={`reply-list-${post._id}`}>
             {post.replies.map(reply => (
-              <div id={`reply-content-container-${reply._id}`} className="d-flex mb15 b-l reply-container">
+              <div id={`reply-content-container-${reply._id}`} className="d-flex mb15 b-l reply-container" key={reply._id}>
                     <div className="flex-shrink-0 pl15 pr10">
                       <span className="avatar avatar-xs">
                           <img src={reply.created_by.avatar.url} alt="Avatar" />
