@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "66238aa0699720f5c7bb0f55"
+  },
+  "name": "Rakesh Ahirrao",
+  "email": "rakeshahirrao29@gmail.com",
+  "password": "$2a$10$z/JW7uhiSol47a5O1vBOOe99jL.Npf2e8TJhO0wb5gn4lQJp9OPee",
+  "role": "user",
+  "avatar": {
+    "public_id": "0.20948159483637263",
+    "url": "eye.png"
+  },
+  "createdAt": {
+    "$date": "2024-04-20T08:35:30.729Z"
+  },
+  "addresses": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66335f6a8efb3e2ef24778be"
+  },
+  "name": "rakesh ahirrao",
+  "email": "rakeshahirrao2901@gmail.com",
+  "password": "$2a$10$7DD1.LVuk3uIgdpMFZKX0.f0gRwMB5fhsgbD1S4t2xwYWKC1H3EZe",
+  "role": "user",
+  "avatar": {
+    "public_id": "0.4187887683359284",
+    "url": "pexels-chokniti-khongchum-2280549.jpg"
+  },
+  "createdAt": {
+    "$date": "2024-05-02T05:34:17.832Z"
+  },
+  "addresses": [],
+  "__v": 0
+}]

@@ -1,0 +1,720 @@
+[{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7b7"
+  },
+  "menu_id": 1,
+  "parent_menu_id": null,
+  "module_id": 1,
+  "menu_name": "DashBoard",
+  "menu_icon": "images/icons/dashboard.png",
+  "url": "project_management",
+  "sub_menu": 0,
+  "menu_order": 1,
+  "components_page": "ProjectManagementPage",
+  "components_load": 1,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7b8"
+  },
+  "menu_id": 2,
+  "parent_menu_id": null,
+  "module_id": 1,
+  "menu_name": "TimeLine",
+  "menu_icon": "images/icons/pms/paper-plane.png",
+  "url": "timeline",
+  "sub_menu": 0,
+  "menu_order": 2,
+  "components_page": "TimeLinePage",
+  "components_load": 1,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7b9"
+  },
+  "menu_id": 3,
+  "parent_menu_id": null,
+  "module_id": 1,
+  "menu_name": "Events",
+  "menu_icon": "images/icons/pms/event.png",
+  "url": "events",
+  "sub_menu": 0,
+  "menu_order": 3,
+  "components_page": "EventsPage",
+  "components_load": 1,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7ba"
+  },
+  "menu_id": 4,
+  "parent_menu_id": null,
+  "module_id": 1,
+  "menu_name": "Notes",
+  "menu_icon": "images/icons/pms/post-it.png",
+  "url": "notes",
+  "sub_menu": 0,
+  "menu_order": 4,
+  "components_page": "NotesPage",
+  "components_load": 1,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7bb"
+  },
+  "menu_id": 5,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "DashBoard",
+  "menu_icon": "images/icons/dashboard.png",
+  "url": "inventory_management",
+  "sub_menu": 0,
+  "menu_order": 1,
+  "components_page": "InventoryManagementPage",
+  "components_load": 1,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7bc"
+  },
+  "menu_id": 6,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Store",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "store",
+  "sub_menu": 0,
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7bd"
+  },
+  "menu_id": 7,
+  "parent_menu_id": null,
+  "module_id": 3,
+  "menu_name": "DashBoard",
+  "menu_icon": "images/icons/dashboard.png",
+  "url": "hrm",
+  "sub_menu": 0,
+  "menu_order": 1,
+  "components_page": "HumanResourceManagementPage",
+  "components_load": 1,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7be"
+  },
+  "menu_id": 8,
+  "parent_menu_id": null,
+  "module_id": 3,
+  "menu_name": "Self Services",
+  "menu_icon": "images/icons/hrm/self-service.png",
+  "url": "self_services",
+  "sub_menu": 1,
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7bf"
+  },
+  "menu_id": 9,
+  "parent_menu_id": null,
+  "module_id": 3,
+  "menu_name": "Leave",
+  "menu_icon": "images/icons/hrm/leave.png",
+  "url": "leave",
+  "sub_menu": 1,
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c0"
+  },
+  "menu_id": 10,
+  "parent_menu_id": null,
+  "module_id": 3,
+  "menu_name": "Time",
+  "menu_icon": "images/icons/hrm/calendar.png",
+  "url": "time",
+  "sub_menu": 1,
+  "menu_order": 4,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c1"
+  },
+  "menu_id": 11,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Employment",
+  "menu_icon": null,
+  "url": "employment_view",
+  "sub_menu": 0,
+  "menu_order": 1,
+  "components_page": "EmploymentPage",
+  "components_load": 1,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c2"
+  },
+  "menu_id": 12,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Contacts",
+  "menu_icon": null,
+  "url": "contacts",
+  "sub_menu": 0,
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c3"
+  },
+  "menu_id": 13,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Personal",
+  "menu_icon": null,
+  "url": "personal",
+  "sub_menu": 0,
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c4"
+  },
+  "menu_id": 14,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Statutory",
+  "menu_icon": null,
+  "url": "statutory",
+  "sub_menu": 0,
+  "menu_order": 4,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c5"
+  },
+  "menu_id": 15,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Bank",
+  "menu_icon": null,
+  "url": "bank",
+  "sub_menu": 0,
+  "menu_order": 5,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c6"
+  },
+  "menu_id": 16,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Family",
+  "menu_icon": null,
+  "url": "family",
+  "sub_menu": 0,
+  "menu_order": 6,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c7"
+  },
+  "menu_id": 17,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Nominee",
+  "menu_icon": null,
+  "url": "nominee",
+  "sub_menu": 0,
+  "menu_order": 7,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c8"
+  },
+  "menu_id": 18,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Immigration",
+  "menu_icon": null,
+  "url": "immigration",
+  "sub_menu": 0,
+  "menu_order": 8,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7c9"
+  },
+  "menu_id": 19,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Driving Licenses",
+  "menu_icon": null,
+  "url": "driving_licenses",
+  "sub_menu": 0,
+  "menu_order": 9,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7ca"
+  },
+  "menu_id": 20,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Skills",
+  "menu_icon": null,
+  "url": "skills",
+  "sub_menu": 0,
+  "menu_order": 10,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7cb"
+  },
+  "menu_id": 21,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Languages",
+  "menu_icon": null,
+  "url": "languages",
+  "sub_menu": 0,
+  "menu_order": 11,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7cc"
+  },
+  "menu_id": 22,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Qualifications",
+  "menu_icon": null,
+  "url": "qualifications",
+  "sub_menu": 0,
+  "menu_order": 12,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7cd"
+  },
+  "menu_id": 23,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Social Details",
+  "menu_icon": null,
+  "url": "social_details",
+  "sub_menu": 0,
+  "menu_order": 13,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7ce"
+  },
+  "menu_id": 24,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Assets List",
+  "menu_icon": null,
+  "url": "assets_list",
+  "sub_menu": 0,
+  "menu_order": 14,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7cf"
+  },
+  "menu_id": 25,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Previous Experience",
+  "menu_icon": null,
+  "url": "previous_experience",
+  "sub_menu": 0,
+  "menu_order": 15,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d0"
+  },
+  "menu_id": 26,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "CTC",
+  "menu_icon": null,
+  "url": "ctc",
+  "sub_menu": 0,
+  "menu_order": 16,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d1"
+  },
+  "menu_id": 27,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Payslip",
+  "menu_icon": null,
+  "url": "payslip",
+  "sub_menu": 0,
+  "menu_order": 17,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d2"
+  },
+  "menu_id": 28,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Download Payslip",
+  "menu_icon": null,
+  "url": "download_payslip",
+  "sub_menu": 0,
+  "menu_order": 18,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d3"
+  },
+  "menu_id": 29,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Yearly Payslip",
+  "menu_icon": null,
+  "url": "yearly_payslip",
+  "sub_menu": 0,
+  "menu_order": 19,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d4"
+  },
+  "menu_id": 30,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Monthly Report",
+  "menu_icon": null,
+  "url": "monthly_report",
+  "sub_menu": 0,
+  "menu_order": 20,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d5"
+  },
+  "menu_id": 31,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Download PF Card",
+  "menu_icon": null,
+  "url": "pf_card",
+  "sub_menu": 0,
+  "menu_order": 21,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d6"
+  },
+  "menu_id": 32,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "View Tax Eligibility",
+  "menu_icon": null,
+  "url": "view_tax_eligibility",
+  "sub_menu": 0,
+  "menu_order": 22,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d7"
+  },
+  "menu_id": 33,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Tax Projection",
+  "menu_icon": null,
+  "url": "tax_projection",
+  "sub_menu": 0,
+  "menu_order": 23,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d8"
+  },
+  "menu_id": 34,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Download Tax Projection",
+  "menu_icon": null,
+  "url": "download_tax_projection",
+  "sub_menu": 0,
+  "menu_order": 24,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7d9"
+  },
+  "menu_id": 35,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Download Form 16",
+  "menu_icon": null,
+  "url": "download_form_sixty",
+  "sub_menu": 0,
+  "menu_order": 25,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7da"
+  },
+  "menu_id": 36,
+  "parent_menu_id": 8,
+  "module_id": 3,
+  "menu_name": "Declaration List",
+  "menu_icon": null,
+  "url": "declaration_list",
+  "sub_menu": 0,
+  "menu_order": 26,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7db"
+  },
+  "menu_id": 37,
+  "parent_menu_id": 9,
+  "module_id": 3,
+  "menu_name": "My Leave Register",
+  "menu_icon": null,
+  "url": "leave_register",
+  "sub_menu": 0,
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7dc"
+  },
+  "menu_id": 38,
+  "parent_menu_id": 9,
+  "module_id": 3,
+  "menu_name": "Leave Apply",
+  "menu_icon": null,
+  "url": "leave_apply",
+  "sub_menu": 0,
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7dd"
+  },
+  "menu_id": 39,
+  "parent_menu_id": 9,
+  "module_id": 3,
+  "menu_name": "Outdoor Duty Apply",
+  "menu_icon": null,
+  "url": "outdoor_duty_apply",
+  "sub_menu": 0,
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7de"
+  },
+  "menu_id": 40,
+  "parent_menu_id": 9,
+  "module_id": 3,
+  "menu_name": "Comp.Off apply",
+  "menu_icon": null,
+  "url": "comp_off_apply",
+  "sub_menu": 0,
+  "menu_order": 4,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7df"
+  },
+  "menu_id": 41,
+  "parent_menu_id": 9,
+  "module_id": 3,
+  "menu_name": "leave Encashment",
+  "menu_icon": null,
+  "url": "leave_encashment",
+  "sub_menu": 0,
+  "menu_order": 5,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7e0"
+  },
+  "menu_id": 42,
+  "parent_menu_id": 9,
+  "module_id": 3,
+  "menu_name": "Leave Adjustment",
+  "menu_icon": null,
+  "url": "leave_adjustment",
+  "sub_menu": 0,
+  "menu_order": 6,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7e1"
+  },
+  "menu_id": 43,
+  "parent_menu_id": 10,
+  "module_id": 3,
+  "menu_name": "My Attendance",
+  "menu_icon": null,
+  "url": "my_attendance",
+  "sub_menu": 0,
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7e2"
+  },
+  "menu_id": 44,
+  "parent_menu_id": 10,
+  "module_id": 2,
+  "menu_name": "Holiday",
+  "menu_icon": null,
+  "url": "holiday",
+  "sub_menu": 0,
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+},
+{
+  "_id": {
+    "$oid": "662389ed183fe841525aa7e3"
+  },
+  "menu_id": 45,
+  "parent_menu_id": 10,
+  "module_id": 3,
+  "menu_name": "Shift Change",
+  "menu_icon": null,
+  "url": "shift_change",
+  "sub_menu": 0,
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": 0,
+  "": 0
+}]

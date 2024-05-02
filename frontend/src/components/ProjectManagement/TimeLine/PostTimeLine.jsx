@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { server } from '../../../server';
 import ReplyForm from '../TimeLine/ReplyForm';
-import { useSelector } from 'react-redux';
 import { updatePostAdded } from '../../../redux/actions/postblog';
 
-const PostTimeLine = () => {
+const PostTimeLine = ({postBlogAdded}) => {
+
+  console.log(postBlogAdded);
+
   const dispatch = useDispatch();
-  const postBlogAdded = useSelector((state) => state.postblog.postAdded);
-  
   const [posts, setPosts] = useState([]);
   const [activePostId, setActivePostId] = useState(null);
   const [expandedPosts, setExpandedPosts] = useState({});
@@ -52,11 +52,12 @@ const PostTimeLine = () => {
         }
     };
 
-    //if (keyProp === 'postAdded') {
     if(postBlogAdded){  
         fetchPosts();
         dispatch(updatePostAdded(false));
-    }  
+    }else{
+        fetchPosts();
+    } 
   }, [postBlogAdded,dispatch]); // Empty dependency array means this effect runs only once
 
   
@@ -77,12 +78,10 @@ const PostTimeLine = () => {
 
   const handleReplyClick = async (postId) => {
     setActivePostId(postId);
-    //etShowReplies(false); // Show replies once fetched
   };
 
   const hideForm = () => {
     setActivePostId(null);
-    //setShowReplies(false); // Hide replies when form is hidden
   };
 
   const renderPostContent = (post) => {
@@ -161,12 +160,22 @@ const PostTimeLine = () => {
           <button ype="button" onClick={() => toggleReplies(post._id)}>View {post.replies.length} Replies</button>
         )}
         {areRepliesExpanded(post._id) && (
-          <div>
+          <div id={`reply-list-${post._id}`}>
             {post.replies.map(reply => (
-              <div key={reply._id}>
-                <img src={reply.created_by.avatar.url} alt="Avatar" />
-                <p>{reply.reply_description}</p>
-              </div>
+              <div id={`reply-content-container-${reply._id}`} className="d-flex mb15 b-l reply-container">
+                    <div className="flex-shrink-0 pl15 pr10">
+                      <span className="avatar avatar-xs">
+                          <img src={reply.created_by.avatar.url} alt="Avatar" />
+                      </span>
+                    </div>
+                    <div className="w-100">
+                       <div className="mb5">
+                            <a href="/" className="dark strong">{reply.created_by.name}</a>&nbsp;
+                            <small><span className="text-off">{formatDate(reply.created)}</span></small>
+                       </div>
+                       <p>{reply.reply_description}</p>
+                    </div>
+               </div>
             ))}
           </div>
         )}

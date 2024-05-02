@@ -296,7 +296,21 @@ li {
     float: none;
     overflow-x: hidden;
 }
+.reply-container {
+    margin: 15px 0;
+}
 
+.pr10 {
+    padding-right: 10px;
+}
+
+.pl15 {
+        padding-left: 15px !important;
+}
+.avatar-xs {
+    width: 30px;
+    height: 30px;
+}
 @media screen and (max-width: 1400px){
     #post_timeline > .post-content:first-child {
         padding-top: 60px !important;

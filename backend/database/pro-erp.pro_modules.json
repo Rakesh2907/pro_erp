@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "662388b7183fe841525aa7b1"
+  },
+  "module_id": 1,
+  "module_name": "Projects Management",
+  "key": "project_management",
+  "components": "Project",
+  "module_icon": "project-management.png",
+  "description": "Turning Visions into Reality: Your Project Management Journey Starts Here.",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "662388b7183fe841525aa7b2"
+  },
+  "module_id": 2,
+  "module_name": "Inventory Management",
+  "key": "inventory_management",
+  "components": "Inventory",
+  "module_icon": "stock-keeping-unit.png",
+  "description": "Master Your Inventory, Empower Your Business: Simplify with Precision.",
+  "is_deleted": 1
+},
+{
+  "_id": {
+    "$oid": "662388b7183fe841525aa7b3"
+  },
+  "module_id": 3,
+  "module_name": "Human Resource Management",
+  "key": "hrm",
+  "components": "HRM",
+  "module_icon": "human-resource.png",
+  "description": "Unleash Your Team's Potential: HR Solutions for Tomorrow's Success.",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "662388b7183fe841525aa7b4"
+  },
+  "module_id": 4,
+  "module_name": "Customer Relationship Management",
+  "key": "crm",
+  "components": "CRM",
+  "module_icon": "management.png",
+  "description": "Empowering Relationships: Elevate Your Customer Experience with CRM.",
+  "is_deleted": 1
+}]
