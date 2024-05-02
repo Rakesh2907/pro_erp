@@ -6,7 +6,7 @@ import ReplyForm from '../TimeLine/ReplyForm';
 import { useSelector } from 'react-redux';
 import { updatePostAdded } from '../../../redux/actions/postblog';
 
-const PostTimeLine = ({keyProp}) => {
+const PostTimeLine = () => {
   const dispatch = useDispatch();
   const postBlogAdded = useSelector((state) => state.postblog.postAdded);
   
@@ -178,7 +178,7 @@ const PostTimeLine = ({keyProp}) => {
   return (
     <div id="post_timeline" className="list-none w-full min-h-full mx-auto relative">
       {posts.map(post => (
-        <div id={`post-content-container-${post.post_id}`} className="post-content" key={post.post_id}>
+        <div id={`post-content-container-${post._id}`} className="post-content" key={post._id}>
           <div className="clearfix">
             <div className="clearfix post-date">
               <span className='bg-blue-500 text-white py-2 px-5 pb-2 rounded-lg'>{post.createdFormattedDate}</span>
