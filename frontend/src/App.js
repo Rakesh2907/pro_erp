@@ -17,6 +17,7 @@ import { server } from './server.js';
 import Loader from './common/Loader';
 
 
+
 // Function to fetch route data from the database
 const fetchRoutes = async () => {
   try {
