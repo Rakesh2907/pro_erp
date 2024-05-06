@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const EventPopup = ({ isOpen, onClose, selectedDate }) => {
-   
-  const [startDate, setStartDate] = useState(selectedDate ? new Date(selectedDate) : new Date());
-  //const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setStartTime] = useState(''); // State for start time
+const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
+  const [startDate, setStartDate] = useState(null); // Initialize with null
+
+  useEffect(() => {
+    // Update startDate when selectedDate changes
+    setStartDate(selectedDate ? new Date(selectedDate) : null);
+  }, [selectedDate]); // Re-run effect when selectedDate changes
+
+  const [startTime, setStartTime] = useState('');
 
   const overlayStyles = {
     display: isOpen ? 'flex' : 'none',
@@ -22,8 +26,8 @@ const EventPopup = ({ isOpen, onClose, selectedDate }) => {
   };
 
   const modalStyles = {
-    width: '100%', // Adjust width as needed
-    maxWidth: '500px', // Set a maximum width if necessary
+    width: '100%',
+    maxWidth: '500px',
     backgroundColor: '#ffffff',
     borderRadius: '8px',
     padding: '20px',
@@ -62,16 +66,10 @@ const EventPopup = ({ isOpen, onClose, selectedDate }) => {
           />
         </div>
         <div className="flex justify-end">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
-            onClick={onClose}
-          >
+          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none" onClick={() => onSave(startDate, startTime)}>
             Save
           </button>
-          <button
-            className="bg-gray-300 text-gray-700 ml-2 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none"
-            onClick={onClose}
-          >
+          <button className="bg-gray-300 text-gray-700 ml-2 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none" onClick={onClose}>
             Cancel
           </button>
         </div>
