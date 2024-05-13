@@ -25,11 +25,9 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
   }, [selectedDate]); // Re-run effect when selectedDate changes
   
   useEffect(() => {
-    // Add ID to the body tag when the modal is open
     if (isOpen) {
       document.body.id = 'event-modal-open';
     } else {
-      // Remove the ID when the modal is closed
       document.body.id = '';
     }
 
