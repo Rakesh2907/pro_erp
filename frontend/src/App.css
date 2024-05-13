@@ -347,6 +347,33 @@ li {
     background-color: #007bff; /* Blue background for current date */
     color: #fff; /* White text color */
   }
+
+  #event-modal-open .custom-dialog {   
+    width: 50%;
+    margin: 10px auto;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  
+  #event-modal-open .bg-black {
+    --tw-bg-opacity: 0.8;
+    background-color: rgb(28 36 52 / var(--tw-bg-opacity));
+    height: 100%;
+  }
+  .icon_cal {
+    float: right;
+    margin-top: 3px !important;
+    margin-left: 80%;
+  }
+
+@media screen and (max-width: 640px){
+    #event-modal-open .custom-dialog {
+        width: 98%;
+    }
+}
+
 @media screen and (max-width: 1400px){
     #post_timeline > .post-content:first-child {
         padding-top: 60px !important;
