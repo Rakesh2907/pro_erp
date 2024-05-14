@@ -348,14 +348,14 @@ li {
     color: #fff; /* White text color */
   }
 
-  #event-modal-open .custom-dialog {   
-    width: 50%;
+  /*#event-modal-open .custom-dialog {   
+    max-width: 50%;
     margin: 10px auto;
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-  }
+  }*/
   
   #event-modal-open .bg-black {
     --tw-bg-opacity: 0.8;
@@ -367,10 +367,58 @@ li {
     margin-top: 3px !important;
     margin-left: 80%;
   }
+  @media (min-width: 1320px) {
+    .\32xl\:max-w-\[40\%\] {
+        max-width: 50%;
+        margin: 10px auto;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+@media (min-width: 1320px){
+    .\32xl\:min-w-\[40\%\] {
+        min-width: 50%;
+    }
+}
+
+@media (min-width: 1320px){
+    .\32xl\:w-2\/5 {
+        width: 50%;
+    }
+}
 
 @media screen and (max-width: 640px){
     #event-modal-open .custom-dialog {
-        width: 98%;
+        max-width: 98%;
+        margin: 10px auto;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+}
+@media screen and (max-width: 768px){
+    #event-modal-open .custom-dialog {
+        max-width: 98%;
+        margin: 10px auto;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    #event-modal-open .custom-dialog {
+        max-width: 98%;
+        margin: 10px auto;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 }
 

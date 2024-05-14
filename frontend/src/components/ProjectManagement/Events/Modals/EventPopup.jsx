@@ -29,6 +29,7 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
       document.body.id = 'event-modal-open';
     } else {
       document.body.id = '';
+     
     }
 
     // Clean up the effect when the component unmounts or isOpen changes
@@ -327,6 +328,13 @@ const CustomHeader = ({ date, decreaseMonth, increaseMonth, changeMonth, changeY
                     isMulti
                   />
                 )}
+              </div>
+            </div>
+            <div className="flex mb-4">
+              <div className="w-3/12 pr-2">
+                <label className="block mb-2" htmlFor="repeat">
+                  Repeat:
+                </label>
               </div>
             </div>
           </div>  
