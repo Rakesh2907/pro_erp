@@ -382,6 +382,9 @@ li {
     top: 53.4% !important;
   }
 
+.toast-container-event {
+    z-index: 10000 !important; /* Adjust as needed */
+}
 
 @media (min-width: 1536px){
  .\32xl\:min-w-\[40\%\] {
