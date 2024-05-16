@@ -13,6 +13,7 @@ const CalendarGrid = () => {
   const calendarRef = useRef(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const fetchData = useCallback(async (calendarInstance) => {
     try {
@@ -23,7 +24,8 @@ const CalendarGrid = () => {
         start: event.startDate,
         end: event.endDate,
         title: event.title,
-        color: event.color
+        color: event.color,
+        id: event._id
       }));
 
       calendarInstance = new Calendar(calendarRef.current, {
@@ -36,6 +38,7 @@ const CalendarGrid = () => {
         },
         events: transformedEvents,
         dateClick: handleDateClick,
+        eventClick: handleEventClick,
         displayEventTime: false,
       });
 
@@ -58,10 +61,24 @@ const CalendarGrid = () => {
   },[fetchData]);
   
   const handleDateClick = (info) => {  
+    setSelectedEvent(null);
     setSelectedDate(info.dateStr);
     setModalOpen(true);
   };
-
+  
+  const handleEventClick = (info) => {
+     
+      const eventId = info.event.id;
+      axios.get(`${server}/events/vieweventdetails/${eventId}`, { withCredentials: true })
+      .then(response => {
+        setSelectedEvent(response.data); // Store event details in state
+        setModalOpen(true); // Open the modal to display event details
+      })
+      .catch(error => {
+        console.error('Error fetching event details:', error);
+        toast.error('Error fetching event details');
+      });
+  }
 
   const handleModalClose = () => {
     setModalOpen(false);
@@ -83,7 +100,15 @@ const CalendarGrid = () => {
   return (
     <div className="flex justify-center w-full">
       <div ref={calendarRef} className="bg-white p-4 m-4 w-full"></div>
-      <EventPopup isOpen={modalOpen} onClose={handleModalClose} onSave={handleModalSave} selectedDate={selectedDate}/>
+      {modalOpen && (
+        <EventPopup 
+          isOpen={modalOpen} 
+          onClose={handleModalClose} 
+          onSave={handleModalSave} 
+          selectedDate={selectedDate}
+          selectedEvent={selectedEvent}
+        />
+      )}
     </div>
   );
 };
