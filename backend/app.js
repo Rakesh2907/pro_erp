@@ -34,6 +34,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 const user = require("./controller/mongodb/user");
 const timeline = require("./controller/mongodb/timeline");
+const events = require("./controller/mongodb/events");
 
 // import routes mysql
 // const timeline = require("./controller/mysql/timeline");
@@ -43,6 +44,7 @@ const mymenu = require("./controller/mymenu");
 
 app.use("/api/v2/user", user);
 app.use("/api/v2/timeline", timeline);
+app.use("/api/v2/events", events);
 app.use("/api/v2/module", mymodule);
 app.use("/api/v2/menu", mymenu);
 

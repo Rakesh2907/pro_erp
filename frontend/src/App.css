@@ -382,7 +382,7 @@ li {
     top: 53.4% !important;
   }
 
-.toast-container-event {
+#event-modal-open .toast-container-event {
     z-index: 10000 !important; /* Adjust as needed */
 }
 

@@ -102,6 +102,7 @@ const App = () => {
         draggable
         pauseOnHover
         theme="dark"
+        className="toast-container-event"
       />
     </BrowserRouter>
   );

@@ -4,12 +4,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Select from 'react-select'; // Import react-select
 import { Button, Dialog, DialogHeader, DialogBody, DialogFooter, Radio, Switch } from "@material-tailwind/react";
 import DatePickerCustomHeader from '../../../../common/DatePickerCustomHeader';
-import axios from 'axios';
-import { server } from '../../../../server';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { useSelector } from "react-redux";
 
 
 const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
+  const { user } = useSelector((state) => state.user);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null); // Add endDate state
   const [selectedClient, setSelectedClient] = useState(null);
@@ -25,12 +25,32 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
   const [location, setLocation] = useState(''); // Add location state
   const [label, setLabel] = useState(''); // Add label state
   const [color, setColor] = useState('gray');
-  const formData = new FormData();
+  
 
   useEffect(() => {
     // Update startDate when selectedDate changes
     setStartDate(selectedDate ? new Date(selectedDate) : null);
   }, [selectedDate]); // Re-run effect when selectedDate changes
+  
+  const resetForm = () => {
+    setStartDate(null);
+    setEndDate(null);
+    setSelectedClient(null);
+    setShareWithOptions('only_me');
+    setSelectedSpecificMembers(null);
+    setStartTime('');
+    setEndTime('');
+    setRepeat(false);
+    setSelectedEveryParam('');
+    setCycles('');
+    setTitle('');
+    setDescription('');
+    setLocation('');
+    setLabel('');
+    setColor('gray');
+  };
+
+
 
   useEffect(() => {
     if (isOpen) {
@@ -82,6 +102,10 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
     { value: 'member1', label: 'Member 1' },
     { value: 'member2', label: 'Member 2' },
     { value: 'member3', label: 'Member 3' },
+    { value: 'member4', label: 'Member 4' },
+    { value: 'member5', label: 'Member 5' },
+    { value: 'member6', label: 'Member 6' },
+    { value: 'member7', label: 'Member 7' },
   ];
 
 
@@ -107,33 +131,49 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
 
   const handleEventSubmit = async (e) => {
     e.preventDefault();
-    
+  
     if (!startDate || !endDate) {
       toast.error('Please select both start date and end date.');
       return;
     }
-
+  
     if (new Date(startDate) > new Date(endDate)) {
       toast.error('Start date cannot be greater than end date.');
       return;
     }
-
-
-    try {
-      const res = await axios.post(`${server}/events/save_event`, formData, { withCredentials: true });
-      console.log(res);
-
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error(error.response?.data?.message || 'An error occurred');
-    }
+  
+    const selectedClientValue = selectedClient?.value || '';
+    const selectedSpecificMembersValue = selectedSpecificMembers ? JSON.stringify(selectedSpecificMembers.map(member => member.value)) : '';
+    const selectedEveryParamValue = selectedEveryParam?.value || '';
+  
+    const formDataToSend = {
+      title,
+      description,
+      startDate,
+      endDate,
+      startTime,
+      endTime,
+      location,
+      label,
+      client: selectedClientValue,
+      shareWithOptions,
+      specificMembers: selectedSpecificMembersValue,
+      repeat,
+      selectedEveryParam: selectedEveryParamValue,
+      cycles,
+      color,
+      loginUser: user,
+    };
+    
+    onSave(formDataToSend);
+    resetForm();
   }
 
 
   return (
     <>
       <Dialog open={isOpen} className="custom-dialog">
-        <form onSubmit={handleEventSubmit}>
+        <form id="event-form" onSubmit={handleEventSubmit}>
           <DialogHeader>Add New Event</DialogHeader>
           <DialogBody className="custom-dialog-body">
             <div className="modal">
@@ -441,10 +481,10 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
                   <Radio
                     id="amber"
                     name="color"
-                    value="amber"
-                    color="amber"
-                    checked={color === "amber"}
-                    onChange={() => setColor("amber")}
+                    value="yellow"
+                    color="yellow"
+                    checked={color === "yellow"}
+                    onChange={() => setColor("yellow")}
                   />
                   <Radio
                     id="red"
@@ -474,19 +514,6 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate }) => {
           </DialogFooter>
         </form>
       </Dialog>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        className="toast-container-event"
-      />
     </>
   );
 };
