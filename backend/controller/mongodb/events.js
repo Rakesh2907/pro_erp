@@ -9,7 +9,56 @@ const multer = require('multer');
 const upload = multer();
 const Event = require("../../model/mongodb/events");
 
+//Update Event
+router.post(
+  '/update_event',
+  isAuthenticated,
+  upload.none(),
+  catchAsyncErrors(async (req, res, next) => {
+    const formData = req.body;
+    const event_id = formData.eventId;
+    // Soft delete previous event
+    await Event.findByIdAndUpdate(event_id, { deletedAt: new Date() });
 
+    // Optional fields with default values or fallbacks
+    const startTime = formData.startTime || '';
+    const endTime = formData.endTime || '';
+    const clientValue = formData.client || '';
+    const specificMembersValue = formData.specificMembers || [];
+    const selectedEveryParamValue = formData.selectedEveryParam || '';
+    const locationValue = formData.location || '';
+    const labelValue = formData.label || '';
+    const cyclesValue = parseInt(formData.cycles, 10) || '';
+
+    // Create and save the event
+    const editedEvent = new Event({
+      title: formData.title,
+      description: formData.description,
+      startDate: new Date(formData.startDate),
+      endDate: new Date(formData.endDate),
+      startTime: startTime,
+      endTime: endTime,
+      location: locationValue,
+      label: labelValue,
+      client: clientValue,
+      shareWithOptions: formData.shareWithOptions,
+      specificMembers: specificMembersValue,
+      repeat: formData.repeat,
+      repeatEvery: formData.repeat === false ? '' : formData.repeatEvery,
+      selectedEveryParam: formData.repeat === false ? '' : selectedEveryParamValue,
+      cycles: formData.repeat === false ? '' : cyclesValue,
+      color: formData.color,
+      loginUser: formData.loginUser,
+    });
+
+     await editedEvent.save();
+
+    res.status(200).json({ message: 'Event updated successfully' });
+  })
+)
+
+
+// Save New Event
 router.post(
   '/save_event',
   isAuthenticated,
@@ -40,7 +89,8 @@ router.post(
       client: clientValue,
       shareWithOptions: formData.shareWithOptions,
       specificMembers: specificMembersValue,
-      repeat: formData.repeat === 'true',
+      repeat: formData.repeat,
+      repeatEvery: formData.repeatEvery,
       selectedEveryParam: selectedEveryParamValue,
       cycles: cyclesValue,
       color: formData.color,
@@ -59,7 +109,7 @@ router.get(
   isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const events = await Event.find(); // Fetch all events from the database
+      const events = await Event.find({ deletedAt: null });
       res.status(200).json({ success: true, events });
     } catch (error) {
       // Handle errors

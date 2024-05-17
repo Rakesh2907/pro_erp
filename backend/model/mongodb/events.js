@@ -42,6 +42,9 @@ const eventSchema = new mongoose.Schema({
   repeat: {
     type: Boolean,
   },
+  repeatEvery: {
+    type: Number,
+  },
   selectedEveryParam: {
     type: String,
   },
@@ -79,8 +82,12 @@ const eventSchema = new mongoose.Schema({
     createdAt: {
       type: Date,
       required: true,
-    },
+    }
   },
+  deletedAt: {
+    type: Date,
+    default: null
+  }
 }, { timestamps: true });
 
 const Event = mongoose.model('Event', eventSchema);

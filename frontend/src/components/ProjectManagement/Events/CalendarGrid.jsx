@@ -14,6 +14,7 @@ const CalendarGrid = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [mode, setMode] = useState('add');
 
   const fetchData = useCallback(async (calendarInstance) => {
     try {
@@ -64,6 +65,7 @@ const CalendarGrid = () => {
     setSelectedEvent(null);
     setSelectedDate(info.dateStr);
     setModalOpen(true);
+    setMode('add'); 
   };
   
   const handleEventClick = (info) => {
@@ -73,6 +75,7 @@ const CalendarGrid = () => {
       .then(response => {
         setSelectedEvent(response.data); // Store event details in state
         setModalOpen(true); // Open the modal to display event details
+        setMode('view');
       })
       .catch(error => {
         console.error('Error fetching event details:', error);
@@ -85,15 +88,29 @@ const CalendarGrid = () => {
   };
 
   const handleModalSave = async (formDataToSend) => {
-      try {
-        const res = await axios.post(`${server}/events/save_event`, formDataToSend, { withCredentials: true });
-        toast.success(res.data.message);
-        setModalOpen(false);
-        fetchData(calendarInstance);
-      } catch (error) {
-        console.error('Error saving event:', error);
-        toast.error(error.response?.data?.message || 'An error occurred');
-      }
+      
+     if(formDataToSend.eventId){
+         try {
+            const res = await axios.post(`${server}/events/update_event`, formDataToSend, { withCredentials: true });
+            toast.success(res.data.message);
+            setModalOpen(false);
+            fetchData(calendarInstance);
+         } catch (error) {
+            console.error('Error updating event:', error);
+            toast.error(error.response?.data?.message || 'An error occurred');
+         }
+     }else{
+
+          try {
+            const res = await axios.post(`${server}/events/save_event`, formDataToSend, { withCredentials: true });
+            toast.success(res.data.message);
+            setModalOpen(false);
+            fetchData(calendarInstance);
+          } catch (error) {
+            console.error('Error saving event:', error);
+            toast.error(error.response?.data?.message || 'An error occurred');
+          }
+     }  
   };
 
  
@@ -107,6 +124,7 @@ const CalendarGrid = () => {
           onSave={handleModalSave} 
           selectedDate={selectedDate}
           selectedEvent={selectedEvent}
+          initialMode={mode}
         />
       )}
     </div>
