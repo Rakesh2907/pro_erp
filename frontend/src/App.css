@@ -385,7 +385,9 @@ li {
 #event-modal-open .toast-container-event {
     z-index: 10000 !important; /* Adjust as needed */
 }
-
+.fc-event {
+    cursor: pointer;
+}
 @media (min-width: 1536px){
  .\32xl\:min-w-\[40\%\] {
     min-width: 50% !important;
