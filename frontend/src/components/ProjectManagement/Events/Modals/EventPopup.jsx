@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from "react-redux";
 import AddNewEvent from './AddNewEvent';
 import EditEvent from './EditEvent';
+import AtSymbolIcon from '@mui/icons-material/AlternateEmail';
 
 
 const EventPopup = ({ isOpen, onClose, onSave, selectedDate, selectedEvent, initialMode }) => { 
@@ -277,7 +278,12 @@ const EventPopup = ({ isOpen, onClose, onSave, selectedDate, selectedEvent, init
         <Dialog open={isOpen} className="custom-dialog">
             <DialogHeader>View Event Details</DialogHeader> 
             <DialogBody className="custom-dialog-body">
-               dsadsad s
+               <h4 className="mt0 float-start">
+                    <span className="float-start mr10">
+                        <AtSymbolIcon style={{ fontSize: 20 }} />
+                    </span>
+                    {selectedEvent.title}
+               </h4>
             </DialogBody>
             <DialogFooter className="justify-between">
             <Button
