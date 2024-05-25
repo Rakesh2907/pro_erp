@@ -3,29 +3,29 @@ import axios from 'axios';
 import { server } from '../../server';
 
 const Dashboard = () => {
-    
     const [loadedModules, setLoadedModules] = useState([]);
 
     useEffect(() => {
         axios.get(`${server}/module/getmodules`, {
             withCredentials: true,
         }).then(response => {
-            setLoadedModules(response.data.module);
+            setLoadedModules(response.data.modules); // Corrected to 'modules'
+        }).catch(error => {
+            console.error("Error fetching modules:", error);
         });
-    },[]);  
+    },[]);
 
     const loadDynamicNavigation = (module_id) => {
         localStorage.setItem('module_id', module_id);
     }
 
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
-       {loadedModules.map((moduleComponent, index) => (
+    return (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+            {loadedModules.map((moduleComponent, index) => (
                 <div className="max-w-sm p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" key={index}>
                     <div className="flex">
-                    <img src={`/images/icons/${moduleComponent.module_icon}`} alt="Module Icon" className="w-10 h-10 mr-4" />
-                        
-                     <h6 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"> {moduleComponent.module_name}</h6>
+                        <img src={`/images/icons/${moduleComponent.module_icon}`} alt="Module Icon" className="w-10 h-10 mr-4" />
+                        <h6 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{moduleComponent.module_name}</h6>
                     </div>
                     <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">{moduleComponent.description}</p>
                     <a href={`/${moduleComponent.key}`} className="inline-flex font-medium items-center text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" onClick={() => loadDynamicNavigation(moduleComponent.module_id)}>
@@ -35,9 +35,9 @@ const Dashboard = () => {
                         </svg>
                     </a>
                 </div>
-        ))}                 
-    </div>
-  )
+            ))}
+        </div>
+    );
 }
 
-export default Dashboard
+export default Dashboard;

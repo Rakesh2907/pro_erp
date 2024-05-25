@@ -1,5 +1,6 @@
 const express = require("express");
 const { getMenuDetails, getSubMenuDetails, getRoutesDetails } = require("../model/mymenu");
+const ProMenu = require("../model/mongodb/mymenu");
 const router = express.Router();
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -15,8 +16,16 @@ router.get(
 
       try {
       
-        const menus = await getMenuDetails(id);
-  
+        //const menus = await getMenuDetails(id);
+        
+        const menus = await ProMenu.find({ 
+          module_id: id,
+          $or: [
+            { parent_menu_id: null },
+            { parent_menu_id: { $exists: false } } // Include documents where parent_menu_id does not exist
+          ]
+        }).sort({ menu_order: 1 });
+
         res.status(200).json({
           success: true,
           menus,
@@ -33,11 +42,15 @@ router.get(
     isAuthenticated,
     catchAsyncErrors(async (req, res, next) => {
       
-      const id = req.params.id;
+      const parent_menu_id = req.params.id;
       try {
 
-        const sub_menus = await getSubMenuDetails(id);
-  
+        //const sub_menus = await getSubMenuDetails(parent_menu_id);
+
+        const sub_menus = await ProMenu.find({ 
+          parent_menu_id: parent_menu_id,
+        }).sort({ menu_order: 1 });
+
         res.status(200).json({
           success: true,
           sub_menus,
@@ -57,7 +70,9 @@ router.get(
        
       try{
 
-        const dynamic_routers = await getRoutesDetails();
+        //const dynamic_routers = await getRoutesDetails();
+         // Await the result of the query directly
+        const dynamic_routers = await ProMenu.find({ components_load: 1});
 
         res.status(200).json({
           success: true,

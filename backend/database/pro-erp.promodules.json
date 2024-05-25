@@ -20,7 +20,7 @@
   "components": "Inventory",
   "module_icon": "stock-keeping-unit.png",
   "description": "Master Your Inventory, Empower Your Business: Simplify with Precision.",
-  "is_deleted": 1
+  "is_deleted": 0
 },
 {
   "_id": {
@@ -44,5 +44,5 @@
   "components": "CRM",
   "module_icon": "management.png",
   "description": "Empowering Relationships: Elevate Your Customer Experience with CRM.",
-  "is_deleted": 1
+  "is_deleted": 0
 }]
