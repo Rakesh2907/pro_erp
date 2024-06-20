@@ -86,10 +86,10 @@
   "parent_menu_id": null,
   "module_id": 2,
   "menu_name": "Store",
-  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "menu_icon": "images/icons/inventory/store-96.png",
   "url": "store",
-  "sub_menu": "0",
-  "menu_order": 2,
+  "sub_menu": "1",
+  "menu_order": 3,
   "components_page": null,
   "components_load": "0",
   "is_deleted": 0
@@ -712,6 +712,662 @@
   "menu_name": "Shift Change",
   "menu_icon": null,
   "url": "shift_change",
+  "sub_menu": "0",
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673b951813939e037f52618"
+  },
+  "menu_id": 46,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Purchase",
+  "menu_icon": "images/icons/inventory/purchase-96.png",
+  "url": "purchase",
+  "sub_menu": "1",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673b9ec813939e037f52619"
+  },
+  "menu_id": 47,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Quality Control",
+  "menu_icon": "images/icons/inventory/quality-control-64.png",
+  "url": "quality_control",
+  "sub_menu": "1",
+  "menu_order": 4,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673ba4b813939e037f5261a"
+  },
+  "menu_id": 48,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Accounts",
+  "menu_icon": "images/icons/inventory/accounts-64.png",
+  "url": "accounts",
+  "sub_menu": "1",
+  "menu_order": 5,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673baac813939e037f5261b"
+  },
+  "menu_id": 49,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Sales",
+  "menu_icon": "images/icons/inventory/sales-96.png",
+  "url": "sales",
+  "sub_menu": "1",
+  "menu_order": 6,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673bb28813939e037f5261c"
+  },
+  "menu_id": 50,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Reports",
+  "menu_icon": "images/icons/inventory/reports-96.png",
+  "url": "reports",
+  "sub_menu": "1",
+  "menu_order": 7,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673bb88813939e037f5261d"
+  },
+  "menu_id": 51,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Departments",
+  "menu_icon": "images/icons/inventory/department-64.png",
+  "url": "departments",
+  "sub_menu": "0",
+  "menu_order": 8,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673bbfa813939e037f5261e"
+  },
+  "menu_id": 52,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Settings",
+  "menu_icon": "images/icons/inventory/settings-128.png",
+  "url": "settings",
+  "sub_menu": "1",
+  "menu_order": 9,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c024813939e037f52620"
+  },
+  "menu_id": 53,
+  "parent_menu_id": null,
+  "module_id": 2,
+  "menu_name": "Master",
+  "menu_icon": "images/icons/inventory/master-96.png",
+  "url": "master",
+  "sub_menu": "1",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c189813939e037f52622"
+  },
+  "menu_id": 54,
+  "parent_menu_id": 53,
+  "module_id": 2,
+  "menu_name": "Unit(s)",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "units",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c1f0813939e037f52623"
+  },
+  "menu_id": 55,
+  "parent_menu_id": 53,
+  "module_id": 2,
+  "menu_name": "Categories",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "categories",
+  "sub_menu": "0",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c244813939e037f52624"
+  },
+  "menu_id": 56,
+  "parent_menu_id": 53,
+  "module_id": 2,
+  "menu_name": "Materials",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "materials",
+  "sub_menu": "0",
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c31d813939e037f52625"
+  },
+  "menu_id": 57,
+  "parent_menu_id": 53,
+  "module_id": 2,
+  "menu_name": "Vendors",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "vendors",
+  "sub_menu": "0",
+  "menu_order": 4,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c3b1813939e037f52626"
+  },
+  "menu_id": 58,
+  "parent_menu_id": 46,
+  "module_id": 2,
+  "menu_name": "Quotations",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "quotations",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c40c813939e037f52627"
+  },
+  "menu_id": 59,
+  "parent_menu_id": 46,
+  "module_id": 2,
+  "menu_name": "Purchase Orders",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "purchase_orders",
+  "sub_menu": "0",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c44f813939e037f52628"
+  },
+  "menu_id": 60,
+  "parent_menu_id": 46,
+  "module_id": 2,
+  "menu_name": "Purchase Requisitions",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "purchase_requisitions",
+  "sub_menu": "0",
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c579813939e037f52629"
+  },
+  "menu_id": 61,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Material Requisitions",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "material_requisitions",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c5e9813939e037f5262a"
+  },
+  "menu_id": 62,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Outward Batch Wise",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "outward_batch_wise",
+  "sub_menu": "0",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c64d813939e037f5262b"
+  },
+  "menu_id": 63,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Return Outward Material",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "return_outward_material",
+  "sub_menu": "0",
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c6fb813939e037f5262c"
+  },
+  "menu_id": 64,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Material Inward",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "material_inward",
+  "sub_menu": "0",
+  "menu_order": 4,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c74e813939e037f5262d"
+  },
+  "menu_id": 65,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "General Inward",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "general_inward",
+  "sub_menu": "0",
+  "menu_order": 5,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c799813939e037f5262e"
+  },
+  "menu_id": 66,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Capital Inward",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "capital_inward",
+  "sub_menu": "0",
+  "menu_order": 6,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c840813939e037f5262f"
+  },
+  "menu_id": 67,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Challan",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "challan",
+  "sub_menu": "0",
+  "menu_order": 7,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c952813939e037f52630"
+  },
+  "menu_id": 68,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Stocks",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "stocks",
+  "sub_menu": "0",
+  "menu_order": 8,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673c9cd813939e037f52631"
+  },
+  "menu_id": 69,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Minimum Stocks",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "minimum_stocks",
+  "sub_menu": "0",
+  "menu_order": 9,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673ca0e813939e037f52632"
+  },
+  "menu_id": 70,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Hazards Stocks",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "hazards_stocks",
+  "sub_menu": "0",
+  "menu_order": 10,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673ca6b813939e037f52633"
+  },
+  "menu_id": 71,
+  "parent_menu_id": 6,
+  "module_id": 2,
+  "menu_name": "Compare Stocks",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "compare_stocks",
+  "sub_menu": "0",
+  "menu_order": 11,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673cef7813939e037f52634"
+  },
+  "menu_id": 72,
+  "parent_menu_id": 47,
+  "module_id": 2,
+  "menu_name": "GRR Passing",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "grr_passing",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d019813939e037f52635"
+  },
+  "menu_id": 73,
+  "parent_menu_id": 48,
+  "module_id": 2,
+  "menu_name": "Billing",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "billing",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d06c813939e037f52636"
+  },
+  "menu_id": 74,
+  "parent_menu_id": 48,
+  "module_id": 2,
+  "menu_name": "Stocks",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "accounts/stocks",
+  "sub_menu": "0",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d126813939e037f52637"
+  },
+  "menu_id": 75,
+  "parent_menu_id": 49,
+  "module_id": 2,
+  "menu_name": "Customer(s)",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "customers",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d173813939e037f52638"
+  },
+  "menu_id": 76,
+  "parent_menu_id": 49,
+  "module_id": 2,
+  "menu_name": "Sales Order(s)",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "sales_orders",
+  "sub_menu": "0",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d29c813939e037f52639"
+  },
+  "menu_id": 77,
+  "parent_menu_id": 50,
+  "module_id": 2,
+  "menu_name": "Graphical Analysis",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "graphical",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d2f5813939e037f5263a"
+  },
+  "menu_id": 78,
+  "parent_menu_id": 50,
+  "module_id": 2,
+  "menu_name": "Vendor Ratings",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "vendor_ratings",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d347813939e037f5263b"
+  },
+  "menu_id": 79,
+  "parent_menu_id": 50,
+  "module_id": 2,
+  "menu_name": "Purchase Orders",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "purchase_order_reports",
+  "sub_menu": "0",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d3a8813939e037f5263c"
+  },
+  "menu_id": 80,
+  "parent_menu_id": 50,
+  "module_id": 2,
+  "menu_name": "Inwards",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "inwards_reports",
+  "sub_menu": "0",
+  "menu_order": 3,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d3fa813939e037f5263d"
+  },
+  "menu_id": 81,
+  "parent_menu_id": 50,
+  "module_id": 2,
+  "menu_name": "Outwards",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "outward_reports",
+  "sub_menu": "0",
+  "menu_order": 4,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d44b813939e037f5263e"
+  },
+  "menu_id": 82,
+  "parent_menu_id": 50,
+  "module_id": 2,
+  "menu_name": "GRR Passing",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "grr_passing_reports",
+  "sub_menu": "0",
+  "menu_order": 5,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d47c813939e037f5263f"
+  },
+  "menu_id": 83,
+  "parent_menu_id": 50,
+  "module_id": 2,
+  "menu_name": "Stocks",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "stocks_reports",
+  "sub_menu": "0",
+  "menu_order": 6,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d6aa813939e037f52640"
+  },
+  "menu_id": 84,
+  "parent_menu_id": 52,
+  "module_id": 2,
+  "menu_name": "Users",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "settings/users",
+  "sub_menu": "0",
+  "menu_order": 1,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d6f7813939e037f52641"
+  },
+  "menu_id": 85,
+  "parent_menu_id": 52,
+  "module_id": 2,
+  "menu_name": "Mearge Materials",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "settings/mearge_materials",
+  "sub_menu": "0",
+  "menu_order": 2,
+  "components_page": null,
+  "components_load": "0",
+  "is_deleted": 0
+},
+{
+  "_id": {
+    "$oid": "6673d73a813939e037f52642"
+  },
+  "menu_id": 86,
+  "parent_menu_id": 52,
+  "module_id": 2,
+  "menu_name": "Mearge Vendors",
+  "menu_icon": "images/icons/inventory/grocery-store.png",
+  "url": "settings/mearge_Vendors",
   "sub_menu": "0",
   "menu_order": 3,
   "components_page": null,
