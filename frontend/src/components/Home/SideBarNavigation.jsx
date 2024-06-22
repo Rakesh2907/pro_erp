@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation} from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import SidebarLinkGroup from '../Layouts/SideBar/SidebarLinkGroup';
 import { server } from '../../server';
 import axios from 'axios';
@@ -9,6 +9,7 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
   const { pathname } = location;
 
   const [subMenusMap, setSubMenusMap] = useState({});
+  const [expandedMenus, setExpandedMenus] = useState({});
 
   useEffect(() => {
     // Initialize submenus map
@@ -32,7 +33,29 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
     });
   };
 
-  //console.log("After Fetch : "+JSON.stringify(subMenusMap, null, 2));
+  const handleMenuClick = (menu_id) => {
+    setExpandedMenus(prevState => ({
+      ...prevState,
+      [menu_id]: !prevState[menu_id]
+    }));
+    loadSubNavigation(menu_id);
+    localStorage.setItem('parent_menu_id', menu_id);
+  };
+
+  useEffect(() => {
+    // Ensure the parent menu stays open if a submenu is active
+    loadedMenus.forEach(menu => {
+      if (menu.sub_menu === '1') {
+        const submenuActive = subMenusMap[menu.menu_id]?.some(subMenu => pathname.includes(subMenu.url));
+        if (submenuActive) {
+          setExpandedMenus(prevState => ({
+            ...prevState,
+            [menu.menu_id]: true
+          }));
+        }
+      }
+    });
+  }, [pathname, loadedMenus, subMenusMap]);
 
   return (
     <div className={`translate transform overflow-hidden`}>
@@ -58,49 +81,44 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
                 pathname === `/${menuComponent.url}` || pathname.includes(`/${menuComponent.url}`)
               }
             >
-               {(handleClick, onOpen) => {
-                 //console.log(menuComponent.url);
-                  return (
-                    <React.Fragment>
-                      <NavLink
-                        to="#"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === `/${menuComponent.url}`  ||
+              {(handleClick, onOpen) => {
+                const isMenuExpanded = expandedMenus[menuComponent.menu_id] || false;
+                return (
+                  <React.Fragment>
+                    <NavLink
+                      to="#"
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                        (pathname === `/${menuComponent.url}` ||
                           pathname.includes(`/${menuComponent.url}`)) &&
-                          'bg-graydark dark:bg-meta-4'
+                        'bg-graydark dark:bg-meta-4'
+                      }`}
+                      onClick={() => handleMenuClick(menuComponent.menu_id)}
+                    >
+                      <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-6' title={`${menuComponent.menu_name}`} />
+                      {menuComponent.menu_name}
+                      <svg
+                        className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                          isMenuExpanded && 'rotate-180'
                         }`}
-                        onClick={() => {
-                             loadSubNavigation(menuComponent.menu_id)
-                             handleClick()
-                        }}
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <img src={`${menuComponent.menu_icon}`} alt={`${menuComponent.menu_name}`} className='w-6' title={`${menuComponent.menu_name}`} />
-                        {menuComponent.menu_name}
-                        <svg
-                          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
-                            onOpen && 'rotate-180'
-                          }`}
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
-                            fill=""
-                          />
-                        </svg>
-                      </NavLink>
-                      {/* <!-- Dropdown Menu Start --> */}
-                      <div
-                        className={`translate transform overflow-hidden ${
-                          !onOpen && 'hidden'
-                        }`}
-                      >
-                        <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                          fill=""
+                        />
+                      </svg>
+                    </NavLink>
+                    {/* <!-- Dropdown Menu Start --> */}
+                    <div
+                      className={`translate transform overflow-hidden ${!isMenuExpanded && 'hidden'}`}
+                    >
+                      <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                         {subMenusMap[menuComponent.menu_id] && subMenusMap[menuComponent.menu_id].map((subMenuComponent, index) => (
                           <li key={index}>
                             <NavLink
@@ -114,12 +132,12 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
                             </NavLink>
                           </li>
                         ))}
-                        </ul>
-                      </div>
-                      {/* <!-- Dropdown Menu End --> */}
-                    </React.Fragment>
-                  );
-                }}
+                      </ul>
+                    </div>
+                    {/* <!-- Dropdown Menu End --> */}
+                  </React.Fragment>
+                );
+              }}
             </SidebarLinkGroup>
           )
         ))}
@@ -128,4 +146,4 @@ const SiderBarNavigation = ({ onOpen, loadedMenus }) => {
   );
 };
 
-export default SiderBarNavigation
+export default SiderBarNavigation;

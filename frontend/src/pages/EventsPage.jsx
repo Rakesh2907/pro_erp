@@ -1,7 +1,6 @@
 import React from 'react';
 import HomePage from './HomePage';
 import CalendarGrid from '../components/ProjectManagement/Events/CalendarGrid';
-//import EventPopup from '../components/ProjectManagement/Events/EventPopup';
 
 const EventsPage = () => {
  
