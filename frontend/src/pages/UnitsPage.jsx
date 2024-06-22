@@ -7,12 +7,14 @@ const UnitsPage = () => {
   return (
     <div>
        <HomePage>
-       <Breadcrumb
+         <Breadcrumb
             items={[
-              { label: 'Units Manager' },
+              { label: 'Home', link: '/home' },
+              { label: 'Dashboard', link: '/inventory_management' },
+              { label: 'Units Manager', link: '/units' }
             ]}
         />
-        <UnitsDataGrid />
+          <UnitsDataGrid />
       </HomePage>
     </div>
   )
