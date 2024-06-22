@@ -810,8 +810,8 @@
   "url": "departments",
   "sub_menu": "0",
   "menu_order": 8,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "DepartmentsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -858,8 +858,8 @@
   "url": "units",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "UnitsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -874,8 +874,8 @@
   "url": "categories",
   "sub_menu": "0",
   "menu_order": 2,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "CategoryPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -890,8 +890,8 @@
   "url": "materials",
   "sub_menu": "0",
   "menu_order": 3,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "MaterialsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -906,8 +906,8 @@
   "url": "vendors",
   "sub_menu": "0",
   "menu_order": 4,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "VendorsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -922,8 +922,8 @@
   "url": "quotations",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "QuotationsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -938,8 +938,8 @@
   "url": "purchase_orders",
   "sub_menu": "0",
   "menu_order": 2,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "PurchaseOrderPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -954,8 +954,8 @@
   "url": "purchase_requisitions",
   "sub_menu": "0",
   "menu_order": 3,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "PurchaseRequisitionsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -970,8 +970,8 @@
   "url": "material_requisitions",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "MaterialRequisitionsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -986,8 +986,8 @@
   "url": "outward_batch_wise",
   "sub_menu": "0",
   "menu_order": 2,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "OutwardBatchWisePage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1002,8 +1002,8 @@
   "url": "return_outward_material",
   "sub_menu": "0",
   "menu_order": 3,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "ReturnOutwardMaterialPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1018,8 +1018,8 @@
   "url": "material_inward",
   "sub_menu": "0",
   "menu_order": 4,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "MaterialInwardPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1034,8 +1034,8 @@
   "url": "general_inward",
   "sub_menu": "0",
   "menu_order": 5,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "GeneralInwardPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1050,8 +1050,8 @@
   "url": "capital_inward",
   "sub_menu": "0",
   "menu_order": 6,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "CapitalInwardPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1066,8 +1066,8 @@
   "url": "challan",
   "sub_menu": "0",
   "menu_order": 7,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "ChallanPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1082,8 +1082,8 @@
   "url": "stocks",
   "sub_menu": "0",
   "menu_order": 8,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "StocksPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1098,8 +1098,8 @@
   "url": "minimum_stocks",
   "sub_menu": "0",
   "menu_order": 9,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "MinimumStocksPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1114,8 +1114,8 @@
   "url": "hazards_stocks",
   "sub_menu": "0",
   "menu_order": 10,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "HazardsStocksPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1130,8 +1130,8 @@
   "url": "compare_stocks",
   "sub_menu": "0",
   "menu_order": 11,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "CompareStocksPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1146,8 +1146,8 @@
   "url": "grr_passing",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "GrrPassingPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1162,8 +1162,8 @@
   "url": "billing",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "AccountsBillingPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1175,11 +1175,11 @@
   "module_id": 2,
   "menu_name": "Stocks",
   "menu_icon": "images/icons/inventory/grocery-store.png",
-  "url": "accounts/stocks",
+  "url": "accounts_stocks",
   "sub_menu": "0",
   "menu_order": 2,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "AccountStocksPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1194,8 +1194,8 @@
   "url": "customers",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "CustomersPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1210,8 +1210,8 @@
   "url": "sales_orders",
   "sub_menu": "0",
   "menu_order": 2,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "SalesOrdersPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1226,8 +1226,8 @@
   "url": "graphical",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "GraphicalPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1242,8 +1242,8 @@
   "url": "vendor_ratings",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "VendorRatingsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1258,8 +1258,8 @@
   "url": "purchase_order_reports",
   "sub_menu": "0",
   "menu_order": 2,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "POReportsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1274,8 +1274,8 @@
   "url": "inwards_reports",
   "sub_menu": "0",
   "menu_order": 3,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "InwardsReportPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1290,8 +1290,8 @@
   "url": "outward_reports",
   "sub_menu": "0",
   "menu_order": 4,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "OutwardReportsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1306,8 +1306,8 @@
   "url": "grr_passing_reports",
   "sub_menu": "0",
   "menu_order": 5,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "GRRPassingReportsPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1322,8 +1322,8 @@
   "url": "stocks_reports",
   "sub_menu": "0",
   "menu_order": 6,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "StocksReportPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1335,11 +1335,11 @@
   "module_id": 2,
   "menu_name": "Users",
   "menu_icon": "images/icons/inventory/grocery-store.png",
-  "url": "settings/users",
+  "url": "settings_users",
   "sub_menu": "0",
   "menu_order": 1,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "SettingsUsersPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1351,11 +1351,11 @@
   "module_id": 2,
   "menu_name": "Mearge Materials",
   "menu_icon": "images/icons/inventory/grocery-store.png",
-  "url": "settings/mearge_materials",
+  "url": "settings_mearge_materials",
   "sub_menu": "0",
   "menu_order": 2,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "SettingsMeargeMaterialPage",
+  "components_load": "1",
   "is_deleted": 0
 },
 {
@@ -1367,10 +1367,10 @@
   "module_id": 2,
   "menu_name": "Mearge Vendors",
   "menu_icon": "images/icons/inventory/grocery-store.png",
-  "url": "settings/mearge_Vendors",
+  "url": "settings_mearge_Vendors",
   "sub_menu": "0",
   "menu_order": 3,
-  "components_page": null,
-  "components_load": "0",
+  "components_page": "SettingsMeargeVendorPage",
+  "components_load": "1",
   "is_deleted": 0
 }]

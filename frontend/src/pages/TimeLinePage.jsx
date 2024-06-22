@@ -3,6 +3,7 @@ import HomePage from './HomePage';
 import PostBlog from '../components/ProjectManagement/TimeLine/PostBlog';
 import PostTimeLine from '../components/ProjectManagement/TimeLine/PostTimeLine';
 import { useSelector } from 'react-redux';
+import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 
 const TimeLinePage = () => {
   const postBlogAdded = useSelector((state) => state.postblog.postAdded);
@@ -10,6 +11,11 @@ const TimeLinePage = () => {
   return (
     <div>
       <HomePage>
+      <Breadcrumb
+            items={[
+              { label: 'Time Line' },
+            ]}
+      />
         <div className="table table-fixed border-spacing-0 w-full">     {/* <!-- box --> */}
           <div className="table-cell align-top h-full float-none overflow-x-hidden"> {/* <!-- box-content --> */}
             <div id="timeline-content" className="p-4 clearfix mb-5 overflow-hidden !important overflow-anchor-none touch-action-auto " style={{ position: 'relative' }}>
